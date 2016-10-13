@@ -11,10 +11,13 @@ import AnalyticsWidget from './AnalyticsWidget';
 class Analytics extends Component {
   componentWillMount () {
     let { actions } = this.props; 
+    console.log(config);
 
     // @TODO actually fetch
     // see '../../redux/modules/analyticsReducer';
-    // actions.fetchRemote(config.apiUrl + 'analytics');
+    console.log(config.siteApiUrl + 'analytics');
+    console.log(actions);
+    actions.fetchRemote(config.siteApiUrl + 'analytics');
   }
 
   render () {

@@ -41,7 +41,7 @@ export function fetchRemote (url: string): Function {
   return (dispatch: Function) => {
     dispatch(fetchStart());
     // Load data
-    return fetch(url + '&method=GET', {
+    return fetch(url, {
       method: 'get',
       credentials: 'same-origin',
       headers: {

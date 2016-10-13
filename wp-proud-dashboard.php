@@ -1,17 +1,17 @@
 <?php
 /*
-Plugin Name:        GovReady (BETA)
-Plugin URI:         http://proud_dashboard.com/wordpress
-Description:        GovReady provides a dashboard and tools to enhance security for government websites and achieve FISMA compliance.
+Plugin Name:        Proud Dashboard
+Plugin URI:         https://github.com/proudcity/wp-proud-dashboard
+Description:        Multisite and other dashboard enhancements
 Version:            1.0.0
-Author:             GovReady
-Author URI:         http://proud_dashboard.com
+Author:             ProudCity
+Author URI:         http://proudcity.com
 License:            Affero GPL v3
 */
 
 namespace Proud\Dashboard;
 
-require_once plugin_dir_path(__FILE__) . 'lib/dashboard-agent.class.php';
+//require_once plugin_dir_path(__FILE__) . 'lib/dashboard-agent.class.php';
 require_once plugin_dir_path(__FILE__) . 'lib/dashboard.class.php';
 
 // Set the version of this plugin
