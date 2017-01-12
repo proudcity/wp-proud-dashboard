@@ -1,0 +1,14 @@
+<div class="slide-left-2">
+  <search></search>
+  <ol class="breadcrumb clean">
+    <!--<li><a ui-sref="city.report" main-toggle="slide-left"><i class="fa fa-th"></i></a></li>
+    <li class="active"><i class="fa fa-file-text-o"></i> Provide <span class="hidden-xs" ng-bind-html="post.title.rendered"></span> details</li>-->
+    <li><a ng-click="back($event)" main-toggle="slide-left" href="#"><i class="fa fa-fw fa-chevron-left"></i>Back</a></li>
+  </ol>
+  <iframe ng-src="{{trustSrc(post)}}" style="border:none;height:1500px;width:100%"></iframe>
+</div>
+
+<div class="animation-wrap slide-left-2">
+  <div class="quickfade" ui-view></div>
+</div>
+

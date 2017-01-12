@@ -1,0 +1,265 @@
+<!doctype html>
+<html class="no-js" lang="en" ng-app="311AppParent">
+  <head>
+    <meta charset="utf-8">
+    <base href="/" />
+    <meta property="og:image" content="http://FILLME!/images/shareimg.jpg" />
+    <meta property="og:url" content="http://FILLME!" />
+    <meta property="og:title" content="FILLME!" />
+    <meta property="og:description" content="FILLME!" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" ng-attr-content="{{metaDescription()}}" />
+    <meta name="keywords" ng-attr-content="{{metaKeywords()}}" />
+    <title ng-bind="pageTitle();">FILLME!</title>
+    <!-- build:css css/libraries.min.css -->
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="bower_components/afkl-lazy-image/release/lazy-image-style.css">
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css cs/maps.css -->
+    <link rel="stylesheet" href="bower_components/mapbox.js/mapbox.css">
+    <link rel="stylesheet" href="bower_components/leaflet.locatecontrol/dist/L.Control.Locate.mapbox.css">
+    <!-- endbuild -->
+    <!-- build:css css/proudcity-patterns.min.css -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- endbuild -->
+    <!-- build:css css/app.min.css -->
+    <link rel="stylesheet" href="css/app.css">
+    <!-- endbuild -->
+    <script type="text/javascript">
+
+
+    var Proud = {};
+    Proud.settings = {
+        "global": {
+            "location": {
+                "city": "San Rafael",
+                "state": "California",
+                "lat": 39.6681,
+                "lng": -84.2481,
+                "code": "San_Rafael,_California"
+            },
+            "external_link_window": true,
+            "mapbox": {
+                "token": "pk.eyJ1IjoiYWxiYXRyb3NzZGlnaXRhbCIsImEiOiI1cVUxbUxVIn0.SqKOVeohLfY0vfShalVDUw",
+                "map": "albatrossdigital.lpkdpcjb"
+            },
+            'proudcity_api': 'http://localhost:4000',
+            'proudcity_site_id': 'san-rafael-ca.proudcity.com',
+            'google_key': 'AIzaSyAYvdraLh30IA0q9Nio4RB_IcvwB9Vp5RI',
+        },
+        "proud_actions_app": {
+            "instances": {
+                "proud_actions_app-1391001": {
+                    "logo": "logo",
+                    "title": "Service Center",
+                    "search": false,
+                    "background": "https://san-rafael-ca.proudcity.com/wp-content/uploads/2016/02/Mt.-Tam.jpg",
+                    "tab_display": "side",
+                    "active_tabs": {
+                        "local": "local",
+                        "vote": "vote",
+                        "faq": "faq",
+                        "payments": "payments",
+                        //"report": "report",
+                        //"maps": "maps"
+                        //"status": "status",
+                        //"custom": "custom"
+                    },
+                    "category_section": {
+                        "permits-licensing":"permits-licensing",
+                        "jobs-contracts":"jobs-contracts",
+                        "culture-recreation":"culture-recreation",
+                        "education-2":"education-2",
+                        "payments":"payments",
+                        "business":"business",
+                        "transportation":"transportation",
+                        "property-housing":"property-housing",
+                        "public-safety":"public-safety",
+                        "services":"services",
+                        "health":"health",
+                        "finance":"finance"
+                    },
+                    "map_layers": [
+                        {
+                            "type": "wordpress",
+                            "slug": "libraries",
+                            "icon": "fa-book",
+                            "title": "Libraries"
+                        },
+                        {
+                            "type": "googlePlaces",
+                            "term": "school",
+                            "icon": "fa-graduation-cap",
+                            "title": "Schools"
+                        },
+                        {
+                            "type": "transit",
+                            "icon": "fa-train",
+                            "title": "Public Transit"
+                        },
+                        {
+                            "type": "bicycle",
+                            "icon": "fa-bicycle",
+                            "title": "Bicycle Routes",
+                        },
+                        {
+                            "type": "traffic",
+                            "icon": "fa-car",
+                            "title": "Traffic"
+                        }
+                    ],
+                    "expand_section": false,
+                    "custom_title": 'Custom title',
+                    "custom_icon": 'fa fa-facebook',
+                    "custom_content": '<iframe src="https://public.romuluscrm.com/departments/sm57h2mx/cases/new" width="500px" height="1590" frameborder="0" style="border: none"></iframe><b>asdf</b>'
+                }
+            },
+            "global": {
+                "api_path": "https://www.westcarrollton.org/wp-json/wp/v2/",
+                "render_in_overlay": false,
+                "issue": {
+                    "service": "iframe",
+                    "link_create": "http:\/\/www.egovlink.com\/westcarrollton\/action.asp",
+                    "link_status": "http:\/\/www.egovlink.com\/westcarrollton\/action.asp"
+                },
+                "payment": {
+                    "service": "link",
+                    "stripe_key": ""
+                },
+                'google_election_id': 5000 // @todo: change to 5000 for 2016 election
+            }
+        },
+    };
+  
+    </script>
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-71593638-6', 'auto');
+    </script>
+  </head>
+  <body>
+
+    <div class="container logo-bar">
+        <a class="pull-right btn-search" href="app.html#/city/search" title="Search">
+            <i class="fa fa-search fa-inverse"></i>
+        </a>
+        <a href="app.html#/city/local">
+            <img src="https://san-rafael-ca.proudcity.com/wp-content/themes/wp-proud-sr-ca-theme/dist/images/logo.svg" class="logo full-logo" title="Home" alt="Home">
+        </a>
+    </div>
+
+    <div ng-init="$root.appId = 'proud_actions_app-1391001'" class="container spacing" style="padding-top: 000px;padding-bottom:00px;"><div in-view="faqCompile = faqCompile || '%3Cdiv%20class%3D%22parent%22%20ui-view%3E%3C%2Fdiv%3E'" lazy-compile="faqCompile" lazy-decode="true"></div></div>
+        
+    <!-- build:js js/bootstrap.js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <!-- endbuild -->
+    <!-- build:js js/angular.js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <!-- endbuild -->
+    <!-- build:js js/angular-core.js -->
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <!-- endbuild -->
+    <!-- build:js js/angular-router-animate.js -->
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <!-- endbuild -->
+    <!-- build:js js/angular-lazy.js -->
+    <script src="bower_components/angular-inview/angular-inview.js"></script>
+    <script src="bower_components/angular-lazycompile/src/angular-lazycompile.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js js/maps.js -->
+    <!-- endbuild -->
+    <!--
+        <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
+        <script src="bower_components/mapbox.js/mapbox.standalone.js"></script>
+        <script src="bower_components/leaflet.locatecontrol/src/L.Control.Locate.js"></script>
+    -->
+
+    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAYvdraLh30IA0q9Nio4RB_IcvwB9Vp5RI"></script>
+
+    <!-- build:js js/libraries.min.js -->
+    <!-- bower:js -->
+    <script src="bower_components/afkl-lazy-image/release/lazy-image.js"></script>
+    <script src="bower_components/ngmap/build/scripts/ng-map.js"></script>
+    <script src="bower_components/map-icons/dist/js/map-icons.js"></script>
+    <script src="bower_components/angular-bind-html-compile/angular-bind-html-compile.js"></script>
+    <script src="bower_components/ngAnalytics/src/ng-analytics.min.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    
+    <!-- build:js js/app.min.js -->
+    <script src="js/utilities/scrollTo.js"></script>
+    <script src="js/app.js"></script>
+    <!-- Routes -->
+    <script src="js/routes/cityRoutes.js"></script>
+    <!-- Providers -->
+    <script src="js/providers/wordpressService.js"></script>
+    <!-- Filters -->
+    <script src="js/filters/termFilter.js"></script>
+    <!-- 311App -->
+    <script src="js/apps/311App/311App.js"></script>
+    <script src="js/apps/311App/directives/menuDir.js"></script>
+    <script src="js/apps/311App/directives/search.js"></script>
+    <script src="js/apps/311App/directives/pcMap.js"></script>
+    <script src="js/apps/311App/directives/pcLocate.js"></script>
+    <script src="js/apps/311App/providers/menuProvider.js"></script>
+    <script src="js/apps/311App/providers/issueService.js"></script>
+    <script src="js/apps/311App/providers/paymentService.js"></script>
+    <script src="js/apps/311App/routes/searchRoutes.js"></script>
+    <script src="js/apps/311App/routes/localRoutes.js"></script>
+    <script src="js/apps/311App/routes/faqRoutes.js"></script>
+    <script src="js/apps/311App/routes/issuesRoutes.js"></script>
+    <script src="js/apps/311App/routes/paymentRoutes.js"></script>
+    <script src="js/apps/311App/routes/customRoutes.js"></script>
+    <script src="js/apps/311App/providers/googleCivicInfoService.js"></script>
+    <script src="js/apps/311App/routes/voteRoutes.js"></script>
+    <!-- endbuild -->
+    <!-- build:js js/vote.min.js -->
+    <!-- endbuild -->
+
+    <style>
+        .action-box>div {
+            border: none;
+        }
+        .logo-bar {
+            padding: 3px;
+            background: #0071BC;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+        .logo-bar .btn-search {
+            margin-top: 2px;
+            font-size: 24px;
+            line-height: 40px;
+            padding: 0 10px;
+        }
+        .nav-contain {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: white;
+            padding: 2px 0;
+        }
+        .parent {
+            padding-top: 55px;
+            padding-bottom: 50px;
+        }
+    </style>
+  </body>
+</html>
