@@ -1,0 +1,18 @@
+<li>
+  <label>
+    <input type="checkbox" ng-model="saveAddress" ng-click="toggleSaveAddress($event);" /> 
+    Save my address
+    <a href="#" title="What does this mean?" ng-click="toggleSaveInfo($event)"><i class="fa fa-fw fa-question-circle"></i></a>
+  </label>
+  <ul ng-if="showSaveInfo" class="text-muted dropdown-menu" style="display:block;top:auto;left:auto;padding:10px;">
+    <li ng-if="!saveAddress">
+      If you check this box, we will save your address in a local cookie, and subsequent visits to this site will automatically display 
+      the services relevant to you. Your address will not be used to track you in any other way.
+    </li>
+    <li ng-if="saveAddress">
+      Your address has been saved in a local cookie, and subsequent visits to this site will automatically display 
+      the services relevant to you. Your address will not be used to track you in any other way. Uncheck this box if you would like
+      us to forget your address.
+    </li>
+  </div>
+</li>

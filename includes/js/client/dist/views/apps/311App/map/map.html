@@ -1,0 +1,17 @@
+<div class="slide-left-2 column">
+  <search></search>
+  <ol class="breadcrumb clean">
+    <li class="active">
+      <i class="fa fa-th"></i> Select map
+    </li>
+  </ol>
+  <dl class="angular-311-2col">
+    <dd ng-repeat="item in layers" class="col-sm-6 col-md-4 category-wrapper">
+      <h4><a main-toggle="slide-left" ui-sref="city.map.view({slug: item.slug})"><i ng-if="item.icon" class="fa {{item.icon}}"></i><span>{{item.title}}</span></a></h4>
+    </dd>
+  </dl>
+</div>
+
+<div class="animation-wrap slide-left-2">
+  <div class="quickfade" ui-view></div>
+</div>

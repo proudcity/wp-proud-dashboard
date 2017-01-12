@@ -1,0 +1,45 @@
+<ng-analytics-auth service-auth-token="{{config.token}}"></ng-analytics-auth>
+
+<p><a class="btn btn-primary btn-lg" href="https://analytics.google.com/analytics/web" role="button" target="_blank">View on Google Analytics &raquo;</a></p>
+
+
+<div class="row">
+  <div class="col-md-12">
+    <ng-analytics-chart chart="charts.sessions" auth-container="embed-api-auth-container"></ng-analytics-chart>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <h3>Popular Pages <small>By page views</small></h3>
+    <ng-analytics-chart chart="charts.pagelist" auth-container="embed-api-auth-container"></ng-analytics-chart>
+  </div>
+  <div class="col-md-6">
+    <h3>Popular Searches <small>By autocomplete clicks</small></h3>
+    <ng-analytics-chart chart="charts.searchlist" auth-container="embed-api-auth-container"></ng-analytics-chart>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <h3>Device <small>By sessions</small></h3>
+    <ng-analytics-chart chart="charts.devices" auth-container="embed-api-auth-container"></ng-analytics-chart>
+  </div>
+  <div class="col-md-6">
+    <h3>Browsers <small>By sessions</small></h3>
+    <ng-analytics-chart chart="charts.browsers" auth-container="embed-api-auth-container"></ng-analytics-chart>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <h3>Popular Answers Categories <small>By clicks</small></h3>
+    <ng-analytics-chart chart="charts.answerscategorylist" auth-container="embed-api-auth-container"></ng-analytics-chart>
+  </div>
+  <div class="col-md-6">
+    <h3>Popular Answers <small>By pageviews</small></h3>
+    <ng-analytics-chart chart="charts.answerslist" auth-container="embed-api-auth-container"></ng-analytics-chart>
+  </div>
+</div>
+
+

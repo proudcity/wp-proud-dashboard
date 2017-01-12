@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-sm-1 col-xs-2 col-icon"><i class="fa fa-fw fa-2x text-muted {{item.icon}}"></i></div>
+  <div class="col-sm-11 col-xs-10">
+    <div class="pull-right  action-buttons">
+      <a ng-if="item.link" class="btn btn-xs btn-default" title="Website" ng-href="{{item.link}}" target="_blank"><i class="fa fa-fw fa-globe"></i> Website</a>
+      <a ng-if="item.questions" class="btn btn-xs btn-default" title="Questions" ui-sref="city.gravityform({'id': item.questions, back: true})"><i class="fa fa-fw fa-envelope-o"></i> Questions</a>
+      <a ng-if="item.phone" class="btn btn-xs btn-default" title="Call us" ng-href="tel:{{item.phone}}" target="_blank"><i class="fa fa-fw fa-phone"></i> {{item.phone}}</a>
+      <a ng-if="item.disclaimer" class="btn btn-xs btn-default" href="#" title="Read caveats to this information" ng-click="toggleDisclaimer($event)" ng-class="showDisclaimer ? active : ''"><i class="fa fa-fw fa-info-circle"></i> Disclaimer</a>
+      <div class="dropdown-menu unhide-dropdown" ng-if="showDisclaimer" ng-bind-html="item.disclaimer">
+        <div ng-bind-html="item.hours"></div>
+        <a ng-if="holidays" href="#" ng-click="toggleHolidays($event)" title="See list of holidays">Closed on holidays</a>
+      </div>
+    </div>
+    <div ng-bind-html="item.title"></div>
+    <div ng-repeat="row in items">
+      <span class="text-muted" ng-if="row.label">{{row.label}}: </span>
+      <span>{{row.value | dayOfWeekFilter}}</span>
+    </div>
+    <div class="text-warning" ng-if="items === false || items.length == 0">Sorry, we could not find any services for your address. <a ui-sref="city.local.address">Try another address?</a></div>
+
+    <div class="text-warning" ng-if="item.alert" ng-bind-html="item.alert"></div>
+    <hr class="compact" />
+  </div>
+</div>

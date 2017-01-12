@@ -1,0 +1,66 @@
+<div class="slide-left-2 column">  
+  
+  <search></search>
+  <ol  class="breadcrumb clean">
+    <li>
+      <a href="" ui-sref="city.local.address" main-toggle="slide-left" title="Choose another address"><i class="fa fa-location-arrow"></i></a>
+    </li>
+    <li class="active">
+      <i class="fa fa-home"></i>Services at {{place.address_assoc.street_number}} {{place.address_assoc.route}}
+    </li>
+    <pc-locate-save></pc-locate-save>
+  </ol>
+
+  <div ng-if="boundary" service-boundary item="boundary"></div>
+
+  <div class="row local-location">
+    <div class="col-md-6">
+
+      <div class="row">
+        <div class="col-sm-1 col-xs-2"><i class="fa fa-map-marker fa-fw fa-2x text-muted"></i></div>
+        <div class="col-sm-11 col-xs-10">
+          <p>{{place.address_assoc.street_number}} {{place.address_assoc.route}},<br/>
+          {{place.address_assoc.locality}}, {{place.address_assoc.administrative_area_level_1}} {{place.address_assoc.postal_code}}-{{place.address_assoc.postal_code_suffix}}
+          </p>
+          
+          <div ng-if="neighborhood" service-neighborhood item="neighborhood"></div>
+          <div ng-if="!neighborhood && place.address_assoc.neighborhood"><span class="text-muted">Neighborhood:</span> {{place.address_assoc.neighborhood}}</div>
+          
+
+          <div ng-if="place.address_assoc.administrative_area_level_2"><span class="text-muted">County:</span> {{place.address_assoc.administrative_area_level_2}}</div>
+          <hr class="compact" />
+        </div>
+      </div>
+
+      <div ng-repeat="item in services">
+        <div ng-if="item.type == 'hours'" service-hourly item="item"></div>
+        <div ng-if="item.type == 'gis' || item.type == 'csv'" service-location item="item"></div>
+        <div ng-if="item.type == 'officials'" service-officials item="item"></div>
+      </div>     
+
+    </div>
+
+    <div class="col-md-6">
+      <pc-map 
+        show-home=1
+        show-title=1
+        zoom="13"
+        legend="buttonbar" 
+        title-suffix="near you"
+        legend-title="More services:"
+        layer-loading="layerLoading"
+        active-item="activeItem"
+        ></pc-map>
+      <hr />
+      <div service-weather></div>
+    </div>
+
+  </div>
+
+  
+</div>
+
+
+<div class="animation-wrap slide-left-2">
+  <div class="quickfade" ui-view></div>
+</div>

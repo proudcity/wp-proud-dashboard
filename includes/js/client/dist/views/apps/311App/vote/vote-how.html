@@ -1,0 +1,130 @@
+<div class="row">
+
+  <ol class="breadcrumb clean">
+    <li>
+      <a href="" ui-sref="city.vote.address" main-toggle="slide-left"><i class="fa fa-location-arrow"></i></a>
+    </li>
+    <li class="active">
+      <i class="fa fa-info-circle"></i>Voting information for {{address.line1}}
+    </li>
+    <pc-locate-save></pc-locate-save>
+  </ol>
+
+  <div class="col-sm-7">
+
+    <h3 style="margin-top:0">
+      <span ng-if="!isEarly">Your polling place</span>
+      <span ng-if="isEarly">Your early voting location</span>
+    </h3>
+
+    <div ng-if="!address">
+      <p>
+      Sorry, we could not find any polling location for your address.  Please try again closer to the election. You can also try searching on the
+      <a ng-href="{{links.votingLocationFinderUrl}}" target="_blank">{{links.name}} polling location finder</a>.
+      </p>
+      <p>In the meantime, you can browse the issues and candidates above.</p>
+    </div>
+
+    <div ng-if="address">
+      <div class="row">
+        <div class="col-sm-1 col-xs-2"><i class="fa fa-map-marker fa-2x text-muted"></i></div>
+        <div class="col-sm-11 col-xs-10">
+          <div  ng-click="getDirections($event)">
+            <div>{{address.locationName}}</div>
+            <div>{{address.line1}}</div>
+            <div ng-if="address.line2">{{address.line2}}</div>
+          </div>
+          <div>{{address.city}}, {{address.state}} {{addrss.zip}}</div>
+          <a ng-if="address" href="#" ng-click="mapScroll($event)" style="margin-top:.5em;display: none;" class="btn btn-default btn-sm visible-xs-inline-block">
+            <i class="fa fa-fw fa-map"></i>View map
+          </a>
+          <a ng-if="address" ng-href="{{directionsLink}}" style="margin-top:.5em" class="btn btn-primary btn-sm" target="_blank">
+            <i class="fa fa-fw fa-location-arrow"></i>Get directions
+          </a>
+          <hr />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-1 col-xs-2"><i class="fa fa-clock-o fa-2x text-muted"></i></div>
+        <div class="col-sm-11 col-xs-10">
+          <div ng-if="hours">
+            <div ng-if="!shortHours || longHours">
+              <div ng-bind-html="hours"></div>
+              <a ng-click="toggleHours($event)" href="#">Show less</a>
+            </div>
+            <div ng-if="shortHours && !longHours">
+              <div ng-bind-html="shortHours"></div>
+              <a ng-click="toggleHours($event)" href="#">Show more</a>
+            </div>
+          </div>
+          <div ng-if="!hours">No hours are available for this polling location. Most polls nationally are open from 7am - 8pm.</div>
+          <hr style="margin-bottom:5px;"  />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-1 col-xs-2"></div>
+        <div class="col-sm-11 col-xs-10">
+          <div style="font-size:.9em">
+            <div class="pull-md-right">
+              Source: 
+              <span ng-repeat="source in sources">
+                {{source.name}}
+                <i ng-if="source.verified" class="fa fa-check-circle" title="Source if verified"></i>
+              </span>
+            </div>
+            <a href="#" ng-click="toggleDisclaimer($event)">Disclaimer</a>
+            <div class="" ng-if="disclaimer">
+              This information is for reference purposes only. Your polling location may differ 
+              from this information depending on many factors, including the address you used to register to vote.
+              Please contact the <a ng-href="{{links.votingLocationFinderUrl}}" target="_blank">{{links.name}}</a> for
+              your official voting information.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- if address -->
+
+    <div ng-if="links">
+      <h3 style="margin-top:36px;">Helpful links from the {{links.name}}</h3>
+      <div class="card-columns card-columns-xs-2 card-columns-sm-2 card-columns-md-2 card-columns-equalize">
+        <div class="card-wrap"><a ng-href="{{links.electionInfoUrl}}" class="card text-center card-btn card-block" target="_blank">
+          <i class="fa fa-info-circle fa-2x"></i>
+          <h4>Election info</h4>
+        </a></div>
+        <div class="card-wrap"><a ng-href="{{links.electionRegistrationUrl}}" class="card text-center card-btn card-block" target="_blank">
+          <i class="fa fa-pencil-square-o fa-2x"></i>
+          <h4>Register to vote</h4>
+        </a></div>
+        <div class="card-wrap"><a ng-href="{{links.electionRegistrationConfirmationUrl}}" class="card text-center card-btn card-block" target="_blank">
+          <i class="fa fa-check-circle-o fa-2x"></i>
+          <h4>Confirm registration</h4>
+        </a></div>
+        <div class="card-wrap"><a ng-href="{{links.absenteeVotingInfoUrl}}" class="card text-center card-btn card-block" target="_blank">
+          <i class="fa fa-globe fa-2x"></i>
+          <h4>Absentee voting info</h4>
+        </a></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-sm-5">
+    <div id="google-map" style="width:100%;height:300px;margin-bottom:10px;"></div>
+    <div class="text-md-right">
+      <img src="//raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_green.png" style="width:16px;"> Early voting location
+      <img src="//raw.githubusercontent.com/Concept211/Google-Maps-Markers/master/images/marker_orange.png" style="width:16px;margin-left: 15px;"> Poll location
+    </div>
+    <hr />
+
+    <div ng-if="date.days >= 0" style="text-align:center">
+      <p>The election is <span ng-if="date.days == 0">today!</span> <span ng-if="date.days > 0">{{date.days}} days away:</span></p>
+      <div class="date-box">{{date.month}} <span class="date-big">{{date.day}}</span> {{date.year}}</div>
+    </div>
+  </div>
+
+</div>
+
+<hr/>

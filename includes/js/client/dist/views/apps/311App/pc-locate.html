@@ -1,0 +1,11 @@
+<form class="form-inline">
+  <div class="form-group">
+    <input class="input-lg form-control" type="text" googleplace ng-model="place" place="chosenPlace" ng-change="chosenUpdate()" style="width:350px" placeholder="enter an address or location" />
+  </div>
+  <button class="btn btn-lg btn-default hidden-xs"><i class="fa fa-search"></i></button>
+</form>
+
+<div ng-if="geolocation">
+  <div class="or-bar"><span>OR</span></div>
+  <button class="btn btn-primary btn-lg" ng-click="locate()"><i class="fa fa-fw" ng-class="geolocationLoading ? 'fa-spin fa-status' : 'fa-location-arrow'"></i> Use my current location</button>
+</div>

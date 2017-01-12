@@ -1,0 +1,114 @@
+<h3 ng-if="showTitle" class="text-muted no-margin-top">
+  <i class="fa fa-fw" ng-class="layerLoading ? 'fa-spin fa-spinner' : layer.icon"></i>
+  {{layer.title}} {{titleSuffix}}
+</h3>
+
+<div class="pc-map">
+  <div class="flip-container" ng-class="activeItem ? 'hover' : ''">
+    <div class="flipper">
+
+      <div class="front">
+        <ng-map 
+          class="pc-map"
+          zoom="{{mapZoom}}" 
+          center="{{center}}"
+          scrollwheel="false"
+          zoom-to-include-markers="true">
+        </ng-map>
+      </div>
+
+      <div class="back card card-block">
+        <a href="#" ng-click="activeItem=null;$event.preventDefault();" class="pull-right"><i class="fa fa-times fa-fw fa-2x"></i></a>
+        <h3 ng-bind-html="activeItem.title.rendered" class="no-margin-top"></h3>
+        <p>
+          <div ng-bind-html="activeItem.meta.address"></div>
+          <div ng-if="activeItem.address2" ng-bind-html="activeItem.meta.address2"></div>
+          <div>{{activeItem.meta.city}}, {{activeItem.meta.state}} {{activeItem.meta.city}}</div>
+        </p>
+        <p>
+          <a ng-if="activeItem.meta.website" ng-href="{{activeItem.meta.website}}" class="btn btn-default"><i class="fa fa-fw fa-globe"></i> Website</a>
+          <a ng-if="activeItem.meta.phone" ng-href="tel:{{activeItem.meta.phone}}" class="btn btn-default"><i class="fa fa-fw fa-phone"></i> Phone</a>
+          <a ng-if="activeItem.meta.email" ng-href="mailto:{{activeItem.meta.email}}" class="btn btn-default"><i class="fa fa-fw fa-envelope-o"></i> Email us</a>
+        </p>
+
+        <div ng-bind-html="activeItem.content.rendered"></div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="pc-map-legend">
+
+  <h5 ng-bind-html="legendTitle"></h5>
+
+  <div ng-if="legend == 'buttonbar'" class="btn-toolbar" role="toolbar"><div class="btn-group">
+    <button ng-repeat="item in layers" 
+      type="button" class="btn btn-default" aria-label="{{item.title}}"
+      title="{{item.title}}"
+      ng-class="item == layer ? 'active' : ''" 
+      ng-click="changeLayer(item)">
+      <i class="fa fa-fw {{item.icon}}" />
+    </button>
+  </div></div>
+
+  <ul ng-if="legend == 'list'" class="nav nav-stacked">
+    <li ng-repeat="item in layers"><a title="{{item.title}}"><i class="fa fa-fw {{item.icon}}" /> <span ng-bind-html="item.title"></span></a></li>
+  </ul>
+
+</div>
+
+
+
+
+
+<style>
+/* entire container, keeps perspective */
+.flip-container {
+  perspective: 1000px;
+}
+  /* flip the pane when hovered */
+  .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+  }
+
+.flip-container, .front, .back {
+  width: 100%;
+  height: 400px;
+}
+
+.back {
+  overflow-y: auto;
+}
+
+/* flip speed goes here */
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+
+  position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+  backface-visibility: hidden;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+  transform: rotateY(180deg);
+}
+
+</style>
