@@ -47,7 +47,7 @@ angular.module('analytics', [
                   'ids': config.id, // The Demos & Tools website view.
                   'start-date': '30daysAgo',
                   'end-date': 'yesterday',
-                  'metrics': 'ga:sessions,ga:users,ga:pageviews',
+                  'metrics': 'ga:sessions,ga:users',
                   'dimensions': 'ga:date'
                 },
                 chart: {

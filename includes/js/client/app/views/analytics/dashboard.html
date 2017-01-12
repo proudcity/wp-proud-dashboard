@@ -1,4 +1,5 @@
-<ng-analytics-auth service-auth-token="{{config.token}}"></ng-analytics-auth>
+Last 30 days
+<ng-analytics-auth service-auth-token="{{config.token}}" class="pull-right"></ng-analytics-auth>
 
 <p><a class="btn btn-primary btn-lg" href="https://analytics.google.com/analytics/web" role="button" target="_blank">View on Google Analytics &raquo;</a></p>
 
@@ -6,6 +7,21 @@
 <div class="row">
   <div class="col-md-12">
     <ng-analytics-chart chart="charts.sessions" auth-container="embed-api-auth-container"></ng-analytics-chart>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <h3>Sessions <small>Number of visitors</small></h3>
+  </div>
+  <div class="col-md-3">
+    <h3>ProudScore <small>Your digital reach to citizens</small></h3>
+  </div>
+  <div class="col-md-3">
+    <h3>Submissions <small>Online forms submitted</small></h3>
+  </div>
+  <div class="col-md-3">
+    <h3>Hearts <small>Pages marked as Helpful</small></h3>
   </div>
 </div>
 
@@ -42,4 +58,9 @@
   </div>
 </div>
 
-
+<style>
+small {
+  display: block;
+  padding-top: 2px;
+}
+</style>
