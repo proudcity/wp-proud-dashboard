@@ -1,0 +1,12 @@
+<h2>Sites</h2>
+
+<div class="row">
+  <div class="col-md-4" ng-repeat="site in sites">
+    <div class="panel panel-default panel-padding">
+      <img />
+      <h3><a ui-sref="site.dashboard({'siteId': site._id})">{{site.name}}</a></h3>
+      <a ng-href="{{site.url}}/wp-admin/edit.php?post_type=page" class="btn btn-default pull-right" target="_blank">Manage content</a>
+      <a ng-href="{{site.url}}" class="btn btn-default" target="_blank">View site</a>
+    </div>
+  </div>
+</div>

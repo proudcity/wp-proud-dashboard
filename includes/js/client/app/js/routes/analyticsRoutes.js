@@ -21,7 +21,7 @@ angular.module('analytics', [
 
       $stateProvider
 
-        .state("analytics", {
+        .state("site.analytics", {
           url: '/analytics', 
           templateUrl: 'views/analytics/dashboard.html',
           resolve: {

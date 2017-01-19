@@ -9,6 +9,7 @@
 angular.module('app', [
   'ui.router',
   'ngAnimate',
+  'site',
   'user',
   'analytics'
 ])
@@ -24,7 +25,7 @@ angular.module('app', [
       $rootScope.apiUrl = _.get(Proud, 'settings.global.proudcity_api') || '';
       $rootScope.siteId = _.get(Proud, 'settings.global.proudcity_site_id') || '';
 
-      $rootScope.token = _.get(Proud, 'settings.global.token') || '';
+      $rootScope.token = _.get(Proud, 'settings.global.token') || localStorage.getItem('id_token');
 
     }
   ]
@@ -34,14 +35,23 @@ angular.module('app', [
   [          '$locationProvider', '$stateProvider', '$urlRouterProvider',
     function ($locationProvider,   $stateProvider,   $urlRouterProvider) {
 
+      // See if this is embedded in WordPress
+      var token = _.get(Proud, 'settings.global.token');
+      if (!token || token == undefined) {
+        $locationProvider.html5Mode(true);
+      }
+      else {
+        token = localStorage.getItem('id_token')
+      }
+
       /////////////////////////////
       // Redirects and Otherwise //
       /////////////////////////////
 
       // Use $urlRouterProvider to configure any redirects (when) and invalid urls (otherwise).
-      //$urlRouterProvider
-      //  .when('/c?id', '/contacts/:id')
-      //  .otherwise('/');
+      $urlRouterProvider
+        //.when('', '/')
+        .otherwise(token ? '/sites' : '/login');
 
       //////////////////////////
       // State Configurations //

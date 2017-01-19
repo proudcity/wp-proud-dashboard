@@ -13,7 +13,6 @@
     <title ng-bind="pageTitle();">ProudCity Service Center</title>
     <!-- build:css css/libraries.min.css -->
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="bower_components/afkl-lazy-image/release/lazy-image-style.css">
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css css/proudcity-patterns.min.css -->
@@ -43,6 +42,10 @@
             },
             //'proudcity_api': 'https://rest.proudcity.com/v1',
             'proudcity_api': 'http://localhost:4000/v1',
+            'auth0': {
+                'domain': 'proudcity.auth0.com',
+                'clientID': 'LJyMRCUoZGdkNRZhx3bCXnsqlGZu5S2R'
+            },
             'proudcity_site_id': '5718db161c42c2c35d2bb97c',
             'google_key': 'AIzaSyAYvdraLh30IA0q9Nio4RB_IcvwB9Vp5RI',
             'rewrite_relative_links': true,
@@ -69,6 +72,7 @@
     <div class="jumbotron">
       <div class="container">
         <h1>ProudCity Dashboard</h1>
+        <p><a href="/analytics">Analytics</a> <a href="/login">Login</a></p>
       </div>
     </div>
 
@@ -103,11 +107,15 @@
     <!-- endbuild -->
 
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-
+    
 
     <!-- build:js js/libraries.min.js -->
     <!-- bower:js -->
+    <script src="bower_components/ngmap/build/scripts/ng-map.js"></script>
+    <script src="bower_components/angular-bind-html-compile/angular-bind-html-compile.js"></script>
     <script src="bower_components/ngAnalytics/src/ng-analytics.min.js"></script>
+    <script src="bower_components/auth0-lock/build/lock.js"></script>
+    <script src="bower_components/angular-lock/angular-lock.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     
@@ -115,6 +123,7 @@
     <script src="js/utilities/scrollTo.js"></script>
     <script src="js/app.js"></script>
     <!-- Routes -->
+    <script src="js/routes/siteRoutes.js"></script>
     <script src="js/routes/userRoutes.js"></script>
     <script src="js/routes/analyticsRoutes.js"></script>
     <!-- Providers -->

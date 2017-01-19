@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-md-7">
+    <p>Make your city proud.  Finish setting up your ProudCity site.</p>
+    <div class="progress">
+      <div id="checklist-progress" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="3 of 10 steps completed" aria-valuemin="0" aria-valuemax="10" style="width:30%">
+        3 of 10 steps completed
+      </div>
+    </div>
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default" ng-repeat="item in checklist">
+        <div class="panel-heading">
+          <h4 class="panel-title" ng-click="accordionClick(item, $event)">
+            <i class="fa fa-fw {{item.icon}} text-muted"></i> {{item.title}}
+            <a ng-if="item.link && !item.active" class="btn btn-sm pull-right" ng-class="item.status ? 'btn-success' : 'btn-default'" ng-click="doClick(item, $event)" title="{{item.title}} in this site's dashboard">
+              <i class="fa fa-fw" ng-class="item.status ? 'fa-check' : 'fa-external-link'"></i>Do it
+            </a>
+          </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse" ng-class="item.active != undefined && item.active ? 'in' : ''">
+          <div class="panel-body">
+            <a class="btn btn" ng-class="item.status ? 'btn-success' : 'btn-default'" ng-click="doClick(item, $event)" title="{{item.title}} in this site's dashboard">
+              <i class="fa fa-fw" ng-class="item.status ? 'fa-check' : 'fa-external-link'"></i>Do it
+            </a>
+            <a class="btn btn" ng-class="item.status ? 'btn-success' : 'btn-default'" ng-click="doneToggle(item, $event)">
+              <i class="fa fa-fw" ng-class="item.status ? 'fa-check' : 'fa-check'"></i>Mark as done
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-5">
+
+    <div class="panel panel-default panel-heading panel-body">
+      <h4 style="margin-top:0;">Did you know?</h4>
+      <div class="">asdkjfhakjsdhfkjhasdf asdf asdf asdf </div>
+    </div>
+
+    <div class="panel panel-default panel-body">
+      <h4 style="margin-top:0;">Get Help</h4>
+      <div class="card-columns card-columns-xs-1 card-columns-sm-2 card-columns-md-2 card-columns-equalize">
+        <div class="card-wrap"><a href="#" onclick="jQuery('.zEWidget-launcher').show();$zopim.livechat.window.show();return false;" class="card text-center card-btn card-block">
+          <i class="fa fa-comment fa-3x"></i>
+          <h3>Live chat</h3>
+        </a></div>
+        <div class="card-wrap"><a href="https://proudcity.com/support/create" class="card text-center card-btn card-block" target="_blank">
+          <i class="fa fa-sticky-note-o fa-3x"></i>
+          <h3>Create a ticket</h3>
+        </a></div>
+        <div class="card-wrap"><a href="https://proudcity.com/support/create" class="card text-center card-btn card-block" target="_blank">
+          <i class="fa fa-plus-circle fa-3x"></i>
+          <h3>Request a feature</h3>
+        </a></div>
+        <div class="card-wrap"><a href="https://proudcity.com/support/create" class="card text-center card-btn card-block" target="_blank">
+          <i class="fa fa-binoculars fa-3x"></i>
+          <h3>Guides</h3>
+        </a></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+</style>
