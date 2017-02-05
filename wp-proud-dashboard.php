@@ -16,9 +16,13 @@ require_once plugin_dir_path(__FILE__) . 'lib/dashboard.class.php';
 
 // Set the version of this plugin
 //if( ! defined( 'GOVREADY_VERSION' ) ) {
-//  define( 'GOVREADY_VERSION', '1.0' );
+define( 'PROUDCITY_API_URL', 'https://rest.proudcity.com/v1' );
+define( 'CITY_API_URL', 'https://city-api.proudcity.com/v1' );
 //} // end if
 
+if ( defined('WP_CLI') && WP_CLI ) {
+  include __DIR__ . '/cli/wp-proud-dashboard-phone-home.php';
+}
 
 class ProudDashboard {
 
@@ -30,7 +34,7 @@ class ProudDashboard {
       'client_id' => 'HbYZO5QXKfgNshjKlhZGizskiaJH9kGH'
     );
     $this->commercial = false; // Is this the commercial or open source version?
-    $this->proud_dashboard_url = 'https://api.proudcity.com/v1.0';
+    $this->proud_dashboard_url = PROUDCITY_API_URL;
     //$this->proud_dashboard_url = 'http://localhost:4000/v1.0'; // NOTE: Docker can't see this!
     //$this->api_debug = true;
 
