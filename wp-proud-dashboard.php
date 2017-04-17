@@ -18,10 +18,13 @@ require_once plugin_dir_path(__FILE__) . 'lib/dashboard.class.php';
 //if( ! defined( 'GOVREADY_VERSION' ) ) {
 define( 'PROUDCITY_API_URL', 'https://rest.proudcity.com/v1' );
 define( 'CITY_API_URL', 'https://city-api.proudcity.com/v1' );
+$distro = getenv('DISTRO');
+define( 'PROUDCITY_DISTRO', !empty($distro ? $distro : 'proudcity'));
+define( 'PROUDCITY_APP', getenv('APP'));
 //} // end if
 
 if ( defined('WP_CLI') && WP_CLI ) {
-  include __DIR__ . '/cli/wp-proud-dashboard-phone-home.php';
+  include __DIR__ . '/cli/wp-proud-dashboard-cli.php';
 }
 
 class ProudDashboard {
