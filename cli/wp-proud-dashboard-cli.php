@@ -145,7 +145,7 @@ class ProudcityDashboardCommand extends WP_CLI_Command
         }
 
         $out = json_encode($out);
-        $request = wp_remote_post(PROUDCITY_API_URL . '/sites/' . PROUDCITY_APP . '/plugins', [data => $out]);
+        $request = wp_remote_post(PROUDCITY_API . '/sites/' . PROUDCITY_APP . '/plugins', [data => $out]);
         return $request;
     }
 
@@ -163,7 +163,7 @@ class ProudcityDashboardCommand extends WP_CLI_Command
      */
     function apioptions($args, $assoc_args)
     {
-        $request = wp_remote_get(PROUDCITY_API_URL . '/distros/' . PROUDCITY_DISTRO . '/plugins');
+        $request = wp_remote_get(PROUDCITY_API . '/distros/' . PROUDCITY_DISTRO . '/plugins');
         $data = json_decode(wp_remote_retrieve_body($request));
 
         //$data = '[{"key": "gravityformsaddon_gravityformsmailchimp_settings.apiKey", "label": "MailChimp API Key", "plugin":"gravityformsmailchimp"}]';
@@ -185,7 +185,7 @@ class ProudcityDashboardCommand extends WP_CLI_Command
         }
 
         $out = json_encode($out);
-        $request = wp_remote_post(PROUDCITY_API_URL . '/sites/' . PROUDCITY_APP . '/options', [data => $out]);
+        $request = wp_remote_post(PROUDCITY_API . '/sites/' . PROUDCITY_APP . '/options', [data => $out]);
         return $request;
     }
 
