@@ -1,7 +1,7 @@
-<div class="container"><div class="col-xs-12">
-  <h1 style="line-height: 65px;margin: 10px 0;"><a href="#" style="text-decoration: none !important;">
-    <img src="<?php print $logo ?>" style="height:50px;float:left;margin-right:10px;" alt="GovReady" />
-    Dashboard <sup>BETA</sup>
-  </a></h1>
+
+<div id="<?php print $this->id; ?>" class="col-sm-12" ng-app="app" style="margin:0">
+  <div ng-init="$root.appId = 'wp_proud_dashboard'" class="container spacing">
+    <div ui-view class="parent"></div>
+
+  </div>
 </div>
-<div id="root" style="height: 100%"></div>

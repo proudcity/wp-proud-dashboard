@@ -16,11 +16,11 @@ require_once plugin_dir_path(__FILE__) . 'lib/dashboard.class.php';
 
 // Set the version of this plugin
 //if( ! defined( 'GOVREADY_VERSION' ) ) {
-define( 'PROUDCITY_API_URL', 'https://rest.proudcity.com/v1' );
-define( 'CITY_API_URL', 'https://city-api.proudcity.com/v1' );
-$distro = getenv('DISTRO');
+//define( 'PROUDCITY_API', 'https://rest.proudcity.com/v1' ); // in wp-proud-core
+define( 'PROUDCITY_DASHBOARD_URL', '//new.proudcity.com' );
+$distro = getenv('PROUDCITY_DISTRO');
 define( 'PROUDCITY_DISTRO', !empty($distro ? $distro : 'proudcity'));
-define( 'PROUDCITY_APP', getenv('APP'));
+//define( 'PROUDCITY_APP', getenv('PROUDCITY_APP')); // in wp-proud-core
 //} // end if
 
 if ( defined('WP_CLI') && WP_CLI ) {
@@ -37,7 +37,7 @@ class ProudDashboard {
       'client_id' => 'HbYZO5QXKfgNshjKlhZGizskiaJH9kGH'
     );
     $this->commercial = false; // Is this the commercial or open source version?
-    $this->proud_dashboard_url = PROUDCITY_API_URL;
+    $this->proud_dashboard_url = PROUDCITY_API;
     //$this->proud_dashboard_url = 'http://localhost:4000/v1.0'; // NOTE: Docker can't see this!
     //$this->api_debug = true;
 
@@ -49,6 +49,21 @@ class ProudDashboard {
     add_action( 'wp_ajax_proud_dashboard_proxy', array($this, 'api_proxy') );
     add_action( 'wp_ajax_nopriv_proud_dashboard_proxy', array($this, 'api_proxy') );  // @todo: this is temp! only for testing!!!
   }
+
+
+/**
+ *  Get path to app based on `wp_proud_service_center_path` option.
+ */
+public static function get_app_path() {
+    $local_path = plugins_url('includes/js', __FILE__);
+    $path = get_option( 'wp_proud_dashboard_path', false );
+    if ($path == 'local') {
+        return $local_path . '/client/dist';
+    }
+    else {
+        return $path ? $path : PROUDCITY_DASHBOARD_URL;
+    }
+}
 
   /**
     * Defines the plugin textdomain.
