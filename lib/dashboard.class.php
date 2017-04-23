@@ -12,6 +12,12 @@ if(!session_id()) {
 
 class Dashboard extends ProudDashboard {
 
+  public static $pages = [
+    'dashboard' => ['title' => 'Dashboard', 'perm' => 'read'],
+    'users' => ['title' => 'Users', 'perm' => 'read'],
+    'analytics' => ['title' => 'Analytics', 'perm' => 'read'],
+    'addons' => ['title' => 'Addons', 'perm' => 'read'],
+  ];
 
   function __construct() {
     parent::__construct();
@@ -20,8 +26,9 @@ class Dashboard extends ProudDashboard {
     //add_action( 'admin_notices', array( $this, 'plugin_activation' ) ) ;
 
     // Add the dashboard page
-    add_action( 'admin_menu', array($this, 'create_menu') );\
-    
+    // @todo: enable
+    //add_action( 'admin_menu', array($this, 'create_menu') );
+
     // Save the auth0 token to $wp_session
     add_action( 'auth0_user_login', array($this, 'auth0_user_login'), 0, 5 );
     //add_action('init', array($this, 'myStartSession'), 1);
@@ -113,14 +120,18 @@ class Dashboard extends ProudDashboard {
    */
   public function create_menu() {
 
-    add_menu_page(
-      __( 'Dashboardz', $this->key ),
-      __( 'Dashboardz', $this->key ),
-      'read',
-      'proud_dashboard',
-      array($this, 'dashboard_page'), 
-      plugins_url('/../images/icon.png', __FILE__) 
-    );
+    foreach(self::$pages as $key => $item) {
+      add_menu_page(
+        __( $item['title'], $this->key ),
+        __( $item['title'], $this->key ),
+        $item['perm'],
+        'proud_' . $key,
+        array($this, 'dashboard_page'),
+        plugins_url('/../images/icon.png', __FILE__)
+      );
+    }
+
+
 
   } // end create_menu
 
@@ -128,10 +139,11 @@ class Dashboard extends ProudDashboard {
   /**
    * Display the ProudCity dashboard.
    */
-  public function dashboard_page() {
+  public function dashboard_page($key) {
     //$options = get_option( 'proud_dashboard_options', array() );
     //$logo = plugins_url('/../images/logo.png', __FILE__);
     global $proudcore;
+    $route = str_replace('proud_', '', $_GET['page']);
 
     $token = $_COOKIE['proud_dashboard_token'];
     $token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Byb3VkY2l0eS5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTExMTQwNzk5ODQzMjgyNjk2MzUiLCJhdWQiOiJMSnlNUkNVb1pHZGtOUlpoeDNiQ1huc3FsR1p1NVMyUiIsImV4cCI6MTQ5MjY0Mjc0NSwiaWF0IjoxNDkxNDMzMTQ1fQ.3HCzqdRVRDqsPZy7VtjH2wm_1tSYQ50nRmdrwFbLreA';
@@ -144,6 +156,7 @@ class Dashboard extends ProudDashboard {
     wp_enqueue_script( 'proud-dashboard-app-libraries', $path . '/js/libraries.min.js?' .$v );
     wp_enqueue_script( 'proud-dashboard-app', $path . '/js/app.min.js', array('proud-dashboard-app-vendor') );
     wp_enqueue_script( 'proud-dashboard-app-templates', $path . '/views/app.templates.js', array('proud-dashboard-app'), false, true);
+    wp_enqueue_style( 'proud-dashboard-app-styles', $path . '/css/app.min.css' );
 
     // Save some JS variables (available at proud_dashboard.siteId, etc)
     $proudcore->addJsSettings([
@@ -153,7 +166,7 @@ class Dashboard extends ProudDashboard {
           'token' => $token,
           //'proudcity_api' => PROUDCITY_API,  // done in wp-proud-code
           'proudcity_city_api' => CITY_API_URL,
-          'default_route' => 'users'
+          'default_route' => $route
         ]
       ]
     ]);
