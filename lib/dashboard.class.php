@@ -27,7 +27,7 @@ class Dashboard extends ProudDashboard {
 
     // Add the dashboard page
     // @todo: enable
-    //add_action( 'admin_menu', array($this, 'create_menu') );
+    add_action( 'admin_menu', array($this, 'create_menu') );
 
     // Save the auth0 token to $wp_session
     add_action( 'auth0_user_login', array($this, 'auth0_user_login'), 0, 5 );
