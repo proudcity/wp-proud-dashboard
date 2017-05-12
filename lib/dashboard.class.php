@@ -112,8 +112,8 @@ class Dashboard extends ProudDashboard {
    */
   public static function plugin_deactivation() {
 
-    delete_option( 'proud_dashboard_options' );
-    delete_option( 'proud_dashboard_token' );
+    //delete_option( 'proud_dashboard_options' );
+    //delete_option( 'proud_dashboard_token' );
 
   } // end plugin_deactivation
 
@@ -149,7 +149,7 @@ class Dashboard extends ProudDashboard {
     $route = str_replace('proud_', '', $_GET['page']);
 
     $token = $_COOKIE['proud_dashboard_token'];
-    print_r($token);
+    print_r(json_decode($token));
     //$token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Byb3VkY2l0eS5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTExMTQwNzk5ODQzMjgyNjk2MzUiLCJhdWQiOiJMSnlNUkNVb1pHZGtOUlpoeDNiQ1huc3FsR1p1NVMyUiIsImV4cCI6MTQ5MjY0Mjc0NSwiaWF0IjoxNDkxNDMzMTQ1fQ.3HCzqdRVRDqsPZy7VtjH2wm_1tSYQ50nRmdrwFbLreA';
     $siteId = PROUDCITY_APP;
     $path = \Proud\Dashboard\Dashboard::get_app_path();
