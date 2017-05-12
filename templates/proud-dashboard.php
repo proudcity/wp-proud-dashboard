@@ -10,6 +10,6 @@
   .dashboard-wrapper > .container {
     width: 100% !important;
     max-width: 1200px !important;
-    margin: 0 !important;
+    margin: 20px 0 !important;
   }
 </style>
