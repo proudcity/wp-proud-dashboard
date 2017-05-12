@@ -60,10 +60,10 @@ class Dashboard extends ProudDashboard {
       'user_profile' => $user_profile,
     );
 
-    print_r($id_token);
-    die();
+    //print_r($data);
+    //die();
 
-    setcookie("proud_dashboard_token", $id_token, time() + 3600*24*14); // @todo: set time
+    setcookie("proud_dashboard_token", json_encode($data), time() + 3600*24*14); // @todo: set time
 
   }
 
