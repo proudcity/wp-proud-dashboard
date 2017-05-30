@@ -149,7 +149,7 @@ class Dashboard extends ProudDashboard {
         $token = str_replace('\"', '"', $token);
         $token = json_decode($token);
         //print_r($token);
-        $token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Byb3VkY2l0eS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NTZhMjk2YjM4ZDg2MGNmOTNjNDAzYTAzIiwiYXVkIjoiT2wzZERaSTJoZXhSTEZHY2xLUk9LQ1E4RHpFUnFjT1kiLCJleHAiOjE0OTQ2MTAzMjAsImlhdCI6MTQ5NDU3NDMyMH0.1Fp4V40jAdSRFhbqgKxKKU8XVcnAOk4jpEup7s9PO14';
+        $token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Byb3VkY2l0eS5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTExMTQwNzk5ODQzMjgyNjk2MzUiLCJhdWQiOiJPbDNkRFpJMmhleFJMRkdjbEtST0tDUThEekVScWNPWSIsImV4cCI6MTQ5NjQ4NDc0MiwiaWF0IjoxNDk2MTI0NzQyfQ.bbih_66MWJh9CmTw55nqgLNs_5SzcJ60wjCl7JY_RD0';
         $siteId = PROUDCITY_APP;
         $path = \Proud\Dashboard\Dashboard::get_app_path();
 
