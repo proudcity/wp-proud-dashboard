@@ -150,7 +150,7 @@ class Dashboard extends ProudDashboard {
         $token = json_decode($token);
         //print_r($token);
         $token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Byb3VkY2l0eS5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMTExMTQwNzk5ODQzMjgyNjk2MzUiLCJhdWQiOiJPbDNkRFpJMmhleFJMRkdjbEtST0tDUThEekVScWNPWSIsImV4cCI6MTQ5NjQ4NDc0MiwiaWF0IjoxNDk2MTI0NzQyfQ.bbih_66MWJh9CmTw55nqgLNs_5SzcJ60wjCl7JY_RD0';
-        $siteId = PROUDCITY_APP;
+        $siteId = PROUDCITY_API;
         $path = \Proud\Dashboard\Dashboard::get_app_path();
 
         // Enqueue angular + the app
@@ -168,7 +168,7 @@ class Dashboard extends ProudDashboard {
                     //'proudcity_site_id' => $siteId,  // done in wp-proud-code
                     'token'              => $token,
                     //'proudcity_api' => PROUDCITY_API,  // done in wp-proud-code
-                    'proudcity_city_api' => CITY_API_URL,
+                    'proudcity_city_api' => $siteId,
                     'default_route'      => $route,
                 ],
             ],
