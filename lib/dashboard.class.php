@@ -145,11 +145,11 @@ class Dashboard extends ProudDashboard {
         global $proudcore;
         $route = str_replace('proud_', '', $_GET['page']);
 
-        $token = $_COOKIE['proud_dashboard_token'];
-        print_r($token);
-        //$token = str_replace('\"', '"', $token);
-        $token = json_decode($token);
-        print_r($token);exit;
+
+        $cookie = $_COOKIE['proud_dashboard_token'];
+        $cookie = stripslashes($cookie);
+        $token = json_decode($cookie, true);
+
         //$token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Byb3VkY2l0eS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NTZhMjk2YjM4ZDg2MGNmOTNjNDAzYTAzIiwiYXVkIjoiT2wzZERaSTJoZXhSTEZHY2xLUk9LQ1E4RHpFUnFjT1kiLCJleHAiOjE0OTQ2MTAzMjAsImlhdCI6MTQ5NDU3NDMyMH0.1Fp4V40jAdSRFhbqgKxKKU8XVcnAOk4jpEup7s9PO14';
         $siteId = PROUDCITY_APP;
         $path = \Proud\Dashboard\Dashboard::get_app_path();
@@ -166,7 +166,7 @@ class Dashboard extends ProudDashboard {
         $proudcore->addJsSettings([
             'proud_dashboard' => [
                 'global' => [
-                    //'proudcity_site_id' => $siteId,  // done in wp-proud-code
+                    'proudcity_site_id' => $siteId,  // done in wp-proud-code
                     'token'              => $token,
                     //'proudcity_api' => PROUDCITY_API,  // done in wp-proud-code
                     'proudcity_city_api' => CITY_API_URL,
