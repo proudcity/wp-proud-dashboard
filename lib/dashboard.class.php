@@ -164,6 +164,10 @@ class Dashboard extends ProudDashboard {
         $cookie = stripslashes($cookie);
         $token = json_decode($cookie, true);
 
+        print '<pre>';
+        print_r($token);
+        print '</pre>';
+
         //$token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Byb3VkY2l0eS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NTZhMjk2YjM4ZDg2MGNmOTNjNDAzYTAzIiwiYXVkIjoiT2wzZERaSTJoZXhSTEZHY2xLUk9LQ1E4RHpFUnFjT1kiLCJleHAiOjE0OTQ2MTAzMjAsImlhdCI6MTQ5NDU3NDMyMH0.1Fp4V40jAdSRFhbqgKxKKU8XVcnAOk4jpEup7s9PO14';
         // @todo: remove this
 
