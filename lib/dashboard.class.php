@@ -3,7 +3,7 @@
  * @author ProudCity
  */
 
-namespace Proud\Dashboard;
+//namespace Proud\Dashboard;
 
 // Initialize $_SESSION
 if (!session_id()) {
