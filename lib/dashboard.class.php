@@ -169,8 +169,9 @@ class Dashboard extends ProudDashboard {
             $jwt = $token['id_token'];
         }
         else {
-            // Load libraries
-            new \WP_Auth0();
+            // Load JWT library
+            require_once WPA0_PLUGIN_DIR . 'lib/php-jwt/Authentication/JWT.php';
+
             $auth0 = get_option('wp_auth0_settings');
 
             $data = [
