@@ -150,7 +150,7 @@ class Dashboard extends ProudDashboard {
         $token = json_decode($cookie, true);
 
         //$token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Byb3VkY2l0eS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NTZhMjk2YjM4ZDg2MGNmOTNjNDAzYTAzIiwiYXVkIjoiT2wzZERaSTJoZXhSTEZHY2xLUk9LQ1E4RHpFUnFjT1kiLCJleHAiOjE0OTQ2MTAzMjAsImlhdCI6MTQ5NDU3NDMyMH0.1Fp4V40jAdSRFhbqgKxKKU8XVcnAOk4jpEup7s9PO14';
-        $siteId = PROUDCITY_APP;
+        $siteId = APP ? APP : getenv('APP');
         $path = \Proud\Dashboard\Dashboard::get_app_path();
 
         // Enqueue angular + the app
