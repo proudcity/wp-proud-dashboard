@@ -164,12 +164,13 @@ class Dashboard extends ProudDashboard {
         $cookie = stripslashes($cookie);
         $token = json_decode($cookie, true);
 
-        // Load libraries
+
         if ($token['id_token']) {
             $jwt = $token['id_token'];
         }
         else {
-            new WP_Auth0();
+            // Load libraries
+            new \WP_Auth0();
             $auth0 = get_option('wp_auth0_settings');
 
             $data = [
