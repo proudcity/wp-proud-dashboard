@@ -181,7 +181,7 @@ class Dashboard extends ProudDashboard {
                 'exp' => time() + 3600 * 24 * 14,
                 'iat' => time() + 3600 * 24 * 14,
             ];
-            $jwt = JWT::encode($token, $auth0['client_secret']);
+            $jwt = \JWT::encode($token, $auth0['client_secret']);
         }
 
         print '<pre>';
