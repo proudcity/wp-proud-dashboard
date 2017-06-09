@@ -145,7 +145,6 @@ class Dashboard extends ProudDashboard {
         global $proudcore;
         $route = str_replace('proud_', '', $_GET['page']);
 
-
         $cookie = $_COOKIE['proud_dashboard_token'];
         $cookie = stripslashes($cookie);
         $token = json_decode($cookie, true);
@@ -167,7 +166,7 @@ class Dashboard extends ProudDashboard {
             'proud_dashboard' => [
                 'global' => [
                     'proudcity_site_id' => $siteId,  // done in wp-proud-code
-                    'token'              => $token,
+                    'token'              => $token['id_token'],
                     //'proudcity_api' => PROUDCITY_API,  // done in wp-proud-code
                     'proudcity_city_api' => CITY_API_URL,
                     'default_route'      => $route,
