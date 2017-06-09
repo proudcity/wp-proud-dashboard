@@ -174,14 +174,14 @@ class Dashboard extends ProudDashboard {
 
             $auth0 = get_option('wp_auth0_settings');
 
-            $data = [
+            $tokenData = [
                 'iss' => 'https://proudcity.auth0.com/',
                 'aud' => $auth0['client_id'],
                 'sub' => $token['user_profile']['user_id'],
                 'exp' => time() + 3600 * 24 * 14,
                 'iat' => time() + 3600 * 24 * 14,
             ];
-            $jwt = \JWT::encode($token, $auth0['client_secret']);
+            $jwt = \JWT::encode($tokenData, $auth0['client_secret']);
         }
 
         print '<pre>';
