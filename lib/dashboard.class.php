@@ -172,7 +172,7 @@ class Dashboard extends ProudDashboard {
             new WP_Auth0();
             $auth0 = get_option('wp_auth0_settings');
 
-            $token = [
+            $data = [
                 'iss' => 'https://proudcity.auth0.com/',
                 'aud' => $auth0['client_id'],
                 'sub' => $token['user_profile']['user_id'],
@@ -181,7 +181,13 @@ class Dashboard extends ProudDashboard {
             ];
             $jwt = JWT::encode($token, $auth0['client_secret']);
         }
-        
+
+        print '<pre>';
+        print_r($jwt);
+        print_r($token);
+        print_r($data);
+        print '</pre>';
+
         $path = \Proud\Dashboard\Dashboard::get_app_path();
 
         // Enqueue angular + the app
