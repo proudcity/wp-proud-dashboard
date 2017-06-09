@@ -14,9 +14,10 @@ class Dashboard extends ProudDashboard {
 
     public static $pages = [
         'dashboard' => ['title' => 'Dashboard', 'perm' => 'read'],
-        'users'     => ['title' => 'Users', 'perm' => 'read'],
-        'analytics' => ['title' => 'Analytics', 'perm' => 'read'],
-        'addons'    => ['title' => 'Addons', 'perm' => 'read'],
+        'analytics' => ['title' => 'Analytics', 'perm' => 'read', 'parent' => 'dashboard'],
+        'marketplace'    => ['title' => 'Marketplace', 'perm' => 'read', 'parent' => 'dashboard'],
+        'payments'     => ['title' => 'Payments', 'perm' => 'read', 'parent' => 'dashboard'],
+        'users'     => ['title' => 'Users', 'perm' => 'create_users', 'parent' => 'dashboard'],
     ];
 
     function __construct() {
@@ -122,14 +123,28 @@ class Dashboard extends ProudDashboard {
     public function create_menu() {
 
         foreach (self::$pages as $key => $item) {
-            add_menu_page(
-                __($item['title'], $this->key),
-                __($item['title'], $this->key),
-                $item['perm'],
-                'proud_' . $key,
-                [$this, 'dashboard_page'],
-                plugins_url('/../images/icon.png', __FILE__)
-            );
+            if (isset($item['parent'])) {
+                add_submenu_page(
+                    'proud_' . $item['parent'],
+                    __($item['title'], $this->key),
+                    __($item['title'], $this->key),
+                    $item['perm'],
+                    'proud_' . $key,
+                    [$this, 'dashboard_page']
+                );
+            }
+            else {
+                add_menu_page(
+                    __($item['title'], $this->key),
+                    __($item['title'], $this->key),
+                    $item['perm'],
+                    'proud_' . $key,
+                    [$this, 'dashboard_page'],
+                    plugins_url('/../images/icon.png', __FILE__)
+                );
+            }
+
+
         }
 
 
@@ -151,7 +166,7 @@ class Dashboard extends ProudDashboard {
 
         //$token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Byb3VkY2l0eS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NTZhMjk2YjM4ZDg2MGNmOTNjNDAzYTAzIiwiYXVkIjoiT2wzZERaSTJoZXhSTEZHY2xLUk9LQ1E4RHpFUnFjT1kiLCJleHAiOjE0OTQ2MTAzMjAsImlhdCI6MTQ5NDU3NDMyMH0.1Fp4V40jAdSRFhbqgKxKKU8XVcnAOk4jpEup7s9PO14';
         // @todo: remove this
-        $siteId = getenv('APP');
+
         $path = \Proud\Dashboard\Dashboard::get_app_path();
 
         // Enqueue angular + the app
@@ -166,7 +181,7 @@ class Dashboard extends ProudDashboard {
         $proudcore->addJsSettings([
             'proud_dashboard' => [
                 'global' => [
-                    'proudcity_site_id' => $siteId,  // done in wp-proud-code
+                    //'proudcity_site_id' => $siteId,  // done in wp-proud-code
                     'token'              => $token['id_token'],
                     //'proudcity_api' => PROUDCITY_API,  // done in wp-proud-code
                     'proudcity_city_api' => CITY_API_URL,
