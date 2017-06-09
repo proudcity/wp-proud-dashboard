@@ -146,6 +146,7 @@ class Dashboard extends ProudDashboard {
         $route = str_replace('proud_', '', $_GET['page']);
 
         $token = $_COOKIE['proud_dashboard_token'];
+        print_r($token);
         //$token = str_replace('\"', '"', $token);
         $token = json_decode($token);
         print_r($token);exit;
