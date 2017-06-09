@@ -164,13 +164,24 @@ class Dashboard extends ProudDashboard {
         $cookie = stripslashes($cookie);
         $token = json_decode($cookie, true);
 
-        print '<pre>';
-        print_r($token);
-        print '</pre>';
+        // Load libraries
+        if ($token['id_token']) {
+            $jwt = $token['id_token'];
+        }
+        else {
+            new WP_Auth0();
+            $auth0 = get_option('wp_auth0_settings');
 
-        //$token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Byb3VkY2l0eS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NTZhMjk2YjM4ZDg2MGNmOTNjNDAzYTAzIiwiYXVkIjoiT2wzZERaSTJoZXhSTEZHY2xLUk9LQ1E4RHpFUnFjT1kiLCJleHAiOjE0OTQ2MTAzMjAsImlhdCI6MTQ5NDU3NDMyMH0.1Fp4V40jAdSRFhbqgKxKKU8XVcnAOk4jpEup7s9PO14';
-        // @todo: remove this
-
+            $token = [
+                'iss' => 'https://proudcity.auth0.com/',
+                'aud' => $auth0['client_id'],
+                'sub' => $token['user_profile']['user_id'],
+                'exp' => time() + 3600 * 24 * 14,
+                'iat' => time() + 3600 * 24 * 14,
+            ];
+            $jwt = JWT::encode($token, $auth0['client_secret']);
+        }
+        
         $path = \Proud\Dashboard\Dashboard::get_app_path();
 
         // Enqueue angular + the app
@@ -186,7 +197,7 @@ class Dashboard extends ProudDashboard {
             'proud_dashboard' => [
                 'global' => [
                     //'proudcity_site_id' => $siteId,  // done in wp-proud-code
-                    'token'              => $token['id_token'],
+                    'token'              => $jwt,
                     //'proudcity_api' => PROUDCITY_API,  // done in wp-proud-code
                     'proudcity_city_api' => CITY_API_URL,
                     'default_route'      => $route,
