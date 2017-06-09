@@ -168,6 +168,7 @@ class Dashboard extends ProudDashboard {
         if ($token['id_token']) {
             $jwt = $token['id_token'];
         }
+        // Sometimes we don't get a token back (direct SSO login from Dashboard)
         else {
             // Load JWT library
             require_once WPA0_PLUGIN_DIR . 'lib/php-jwt/Authentication/JWT.php';
@@ -181,14 +182,12 @@ class Dashboard extends ProudDashboard {
                 'exp' => time() + 3600 * 24 * 14,
                 'iat' => time() + 3600 * 24 * 14,
             ];
+
             $jwt = \JWT::encode($tokenData, $auth0['client_secret']);
+            $token['id_token'] = $jwt;
+            setcookie("proud_dashboard_token", json_encode($data), time() + 3600 * 24 * 14);
         }
 
-        print '<pre>';
-        print_r($jwt);
-        print_r($token);
-        print_r($data);
-        print '</pre>';
 
         $path = \Proud\Dashboard\Dashboard::get_app_path();
 
