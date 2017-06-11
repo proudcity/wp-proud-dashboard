@@ -17,7 +17,8 @@ require_once plugin_dir_path(__FILE__) . 'lib/dashboard.class.php';
 // Set the version of this plugin
 //if( ! defined( 'GOVREADY_VERSION' ) ) {
 //define( 'PROUDCITY_API', 'https://rest.proudcity.com/v1' ); // in wp-proud-core
-define('PROUDCITY_DASHBOARD_URL', '//new.proudcity.com');
+define('PROUDCITY_DASHBOARD_URL', '//my.proudcity.com');
+define('CITY_API_URL', 'https://city-api.proudcity.com/v1');
 $distro = getenv('PROUDCITY_DISTRO');
 define('PROUDCITY_DISTRO', !empty($distro ? $distro : 'proudcity'));
 //define( 'PROUDCITY_APP', getenv('PROUDCITY_APP')); // in wp-proud-core

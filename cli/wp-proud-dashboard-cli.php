@@ -26,6 +26,8 @@ class ProudcityDashboardCommand extends WP_CLI_Command
         $location = str_replace('"', '', $args[0]);
         $request = wp_remote_get(CITY_API_URL . '/city/' . $location . '/service-center');
         $data = json_decode(wp_remote_retrieve_body($request));
+        WP_CLI::success('Fetching data from: ' . CITY_API_URL . '/city/' . $location . '/service-center');
+        print_R($data);
         $city = $data->global->location->city;
 
         // Set options
@@ -38,12 +40,18 @@ class ProudcityDashboardCommand extends WP_CLI_Command
 
         // Pre-populate service center
         $services = array();
-        foreach ($data->proud_actions_app->global->services as $service) {
-            array_push($services, (array)$service);
+        if (!empty($data->proud_actions_app->global->services)) {
+            foreach ($data->proud_actions_app->global->services as $service) {
+                array_push($services, (array)$service);
+            }
+            update_option('services_local', $services);
+            WP_CLI::success('Pre-populated service center settings:');
+            print_r($services);
         }
-        update_option('services_local', $services);
-        print_r($services);
-        WP_CLI::success('Pre-populated service center settings');
+        else {
+            WP_CLI::error('Could not find and services so skipped pre-populating service center settings');
+        }
+
 
 
         // Upload images
@@ -53,6 +61,8 @@ class ProudcityDashboardCommand extends WP_CLI_Command
 
         $request = wp_remote_get(CITY_API_URL . '/city/' . $location . '/images');
         $images = json_decode(wp_remote_retrieve_body($request));
+        WP_CLI::success('Fetching data from: ' . CITY_API_URL . '/city/' . $location . '/images');
+        print_R($images);
 
         // Updates the caption, sets the homepage image,
         function pc_new_attachment($att_id)
@@ -91,6 +101,9 @@ class ProudcityDashboardCommand extends WP_CLI_Command
                 remove_action('add_attachment', 'pc_new_attachment');
                 WP_CLI::success('Imported image from Google Places: ' . $src);
             }
+        }
+        else {
+            WP_CLI::error('No image data, so skipped importing and setting background images');
         }
 
         // @todo?
