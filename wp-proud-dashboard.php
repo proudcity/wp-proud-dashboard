@@ -11,6 +11,9 @@ License:            Affero GPL v3
 
 namespace Proud\Dashboard;
 
+define('PROUDCITY_DASHBOARD_COOKIE_LIFETIME', 86400); // 1 day = 3600 * 24, this should match Auth0
+
+
 //require_once plugin_dir_path(__FILE__) . 'lib/dashboard-agent.class.php';
 require_once plugin_dir_path(__FILE__) . 'lib/dashboard.class.php';
 

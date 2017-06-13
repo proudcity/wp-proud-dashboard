@@ -5,7 +5,6 @@
 
 namespace Proud\Dashboard;
 
-define('PROUDCITY_DASHBOARD_COOKIE_LIFETIME', 86400); // 1 day = 3600 * 24
 
 // Initialize $_SESSION
 if (!session_id()) {
