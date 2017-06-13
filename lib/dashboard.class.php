@@ -5,6 +5,8 @@
 
 namespace Proud\Dashboard;
 
+define('PROUDCITY_DASHBOARD_COOKIE_LIFETIME', 86400); // 1 day = 3600 * 24
+
 // Initialize $_SESSION
 if (!session_id()) {
     session_start();
@@ -63,7 +65,7 @@ class Dashboard extends ProudDashboard {
         //print_r($data);
         //die();
 
-        setcookie("proud_dashboard_token", json_encode($data), time() + 3600 * 24 * 14); // @todo: set time
+        setcookie("proud_dashboard_token", json_encode($data), time() + PROUDCITY_DASHBOARD_COOKIE_LIFETIME); // @todo: set time
 
     }
 
@@ -164,9 +166,11 @@ class Dashboard extends ProudDashboard {
         $cookie = stripslashes($cookie);
         $token = json_decode($cookie, true);
 
+        echo '<pre style="display:none">';
 
         if ($token['id_token']) {
             $jwt = $token['id_token'];
+            echo 'KEY FROM COOKIE: ' .$jwt;
         }
         // Sometimes we don't get a token back (direct SSO login from Dashboard)
         else {
@@ -179,15 +183,20 @@ class Dashboard extends ProudDashboard {
                 'iss' => 'https://proudcity.auth0.com/',
                 'aud' => $auth0['client_id'],
                 'sub' => $token['user_profile']['user_id'],
-                'exp' => time() + 3600 * 24 * 14,
-                'iat' => time() + 3600 * 24 * 14,
+                'exp' => time() + PROUDCITY_DASHBOARD_COOKIE_LIFETIME,
+                'iat' => time() + PROUDCITY_DASHBOARD_COOKIE_LIFETIME,
             ];
 
             $jwt = \JWT::encode($tokenData, $auth0['client_secret']);
             $token['id_token'] = $jwt;
-            setcookie("proud_dashboard_token", json_encode($data), time() + 3600 * 24 * 14);
+
+            echo 'GENERATED KEY' . $jwt;
+            print_r($tokenData);
+            print_r($_COOKIE);
+            //setcookie("proud_dashboard_token", json_encode($data), time() + 3600 * 24 * 14);
         }
 
+        echo '</pre>';
 
         $path = \Proud\Dashboard\Dashboard::get_app_path();
 
