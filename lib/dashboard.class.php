@@ -64,7 +64,7 @@ class Dashboard extends ProudDashboard {
         //print_r($data);
         //die();
 
-        setcookie("proud_dashboard_token", json_encode($data), time() + PROUDCITY_DASHBOARD_COOKIE_LIFETIME); // @todo: set time
+        setcookie("proud_dashboard_token", json_encode($data), time() + PROUDCITY_DASHBOARD_COOKIE_LIFETIME*10); // @todo: set time
 
     }
 
@@ -167,12 +167,12 @@ class Dashboard extends ProudDashboard {
 
         echo '<pre style="display:none">';
 
-        if ($token['id_token']) {
-            $jwt = $token['id_token'];
-            echo 'KEY FROM COOKIE: ' .$jwt;
-        }
+        //if ($token['id_token']) {
+        //    $jwt = $token['id_token'];
+        //    echo 'KEY FROM COOKIE: ' .$jwt;
+        //}
         // Sometimes we don't get a token back (direct SSO login from Dashboard)
-        else {
+        //else {
             // Load JWT library
             require_once WPA0_PLUGIN_DIR . 'lib/php-jwt/Authentication/JWT.php';
 
@@ -193,7 +193,7 @@ class Dashboard extends ProudDashboard {
             print_r($tokenData);
             print_r($_COOKIE);
             //setcookie("proud_dashboard_token", json_encode($data), time() + 3600 * 24 * 14);
-        }
+        //}
 
         echo '</pre>';
 
