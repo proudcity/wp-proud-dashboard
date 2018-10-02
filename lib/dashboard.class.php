@@ -159,7 +159,7 @@ class Dashboard extends ProudDashboard {
         //$options = get_option( 'proud_dashboard_options', array() );
         //$logo = plugins_url('/../images/logo.png', __FILE__);
         global $proudcore;
-        $route = str_replace('proud_', '', $_GET['page']);
+        $route = str_replace('proud_', '', sanitize_text_field( $_GET['page'] ) );
 
         $cookie = $_COOKIE['proud_dashboard_token'];
         $cookie = stripslashes($cookie);
