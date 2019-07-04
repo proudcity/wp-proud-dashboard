@@ -27,7 +27,7 @@ class ProudcityDashboardCommand extends WP_CLI_Command
         $request = wp_remote_get(CITY_API_URL . '/city/' . $location . '/service-center');
         $data = json_decode(wp_remote_retrieve_body($request));
         WP_CLI::success('Fetching data from: ' . CITY_API_URL . '/city/' . $location . '/service-center');
-        print_R($data);
+//        print_R($data);
         $city = $data->global->location->city;
 
         // Set options
@@ -46,7 +46,7 @@ class ProudcityDashboardCommand extends WP_CLI_Command
             }
             update_option('services_local', $services);
             WP_CLI::success('Pre-populated service center settings:');
-            print_r($services);
+//            print_r($services);
         }
         else {
             WP_CLI::error('Could not find and services so skipped pre-populating service center settings');
@@ -62,7 +62,7 @@ class ProudcityDashboardCommand extends WP_CLI_Command
         $request = wp_remote_get(CITY_API_URL . '/city/' . $location . '/images');
         $images = json_decode(wp_remote_retrieve_body($request));
         WP_CLI::success('Fetching data from: ' . CITY_API_URL . '/city/' . $location . '/images');
-        print_R($images);
+        //print_R($images);
 
         // Updates the caption, sets the homepage image,
         function pc_new_attachment($att_id)
