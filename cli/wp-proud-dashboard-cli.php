@@ -219,6 +219,7 @@ class ProudcityDashboardCommand extends WP_CLI_Command
 
         $key = str_replace('"', '', $args[0]);
         $value = str_replace('"', '', $args[1]);
+        $value = str_replace('::', PHP_EOL, $value);
 
         if (strpos($key,'.') === FALSE) {
             $return = update_option($key, $value, false);
