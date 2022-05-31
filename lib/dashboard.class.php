@@ -161,7 +161,7 @@ class Dashboard extends ProudDashboard {
         global $proudcore;
         $route = str_replace('proud_', '', sanitize_text_field( $_GET['page'] ) );
 
-        $cookie = $_COOKIE['proud_dashboard_token'];
+        $cookie = ( isset( $_COOKIE['proud_dashboard_token'] ) ) ? $_COOKIE['proud_dashboard_token'] : '';
         $cookie = stripslashes($cookie);
         $token = json_decode($cookie, true);
 
