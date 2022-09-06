@@ -7,7 +7,7 @@ namespace Proud\Dashboard;
 
 
 // Initialize $_SESSION
-if (!session_id()) {
+if ( ! headers_sent() && ! session_id() ) {
     session_start();
 }
 
