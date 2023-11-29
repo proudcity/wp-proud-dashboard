@@ -33,8 +33,9 @@ if (defined('WP_CLI') && WP_CLI) {
 
 class ProudDashboard {
 
-    public function __construct() {
-        $this->key = 'proud_dashboard';
+	public function __construct() {
+		// commented out because PHP 8.2 does't allow dynamic properties
+        //$this->key = 'proud_dashboard';
         // @todo: get this from an API call?
         $this->auth0 = [
             'domain'    => 'proud_dashboard.auth0.com',

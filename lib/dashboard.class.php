@@ -127,8 +127,8 @@ class Dashboard extends ProudDashboard {
             if (isset($item['parent'])) {
                 add_submenu_page(
                     'proud_' . $item['parent'],
-                    __($item['title'], $this->key),
-                    __($item['title'], $this->key),
+                    __($item['title'], 'proud_dashboard'),
+                    __($item['title'], 'proud_dashboard'),
                     $item['perm'],
                     'proud_' . $key,
                     [$this, 'dashboard_page']
@@ -136,8 +136,8 @@ class Dashboard extends ProudDashboard {
             }
             else {
                 add_menu_page(
-                    __($item['title'], $this->key),
-                    __($item['title'], $this->key),
+                    __($item['title'], 'proud_dashboard'),
+                    __($item['title'], 'proud_dashboard'),
                     $item['perm'],
                     'proud_' . $key,
                     [$this, 'dashboard_page'],
