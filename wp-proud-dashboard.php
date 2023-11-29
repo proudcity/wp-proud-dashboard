@@ -3,7 +3,7 @@
 Plugin Name:        Proud Dashboard
 Plugin URI:         https://github.com/proudcity/wp-proud-dashboard
 Description:        Multisite and other dashboard enhancements
-Version:            1.0.0
+Version:            2023.11.28.1135
 Author:             ProudCity
 Author URI:         http://proudcity.com
 License:            Affero GPL v3
@@ -32,6 +32,13 @@ if (defined('WP_CLI') && WP_CLI) {
 }
 
 class ProudDashboard {
+
+	public $commercial = FALSE;
+	public $proud_dashboard_url = PROUDCITY_API;
+	public $auth0 = array(
+		'domain'    => 'proud_dashboard.auth0.com',
+		'client_id' => 'HbYZO5QXKfgNshjKlhZGizskiaJH9kGH',
+	);
 
 	public function __construct() {
 		// commented out because PHP 8.2 does't allow dynamic properties
