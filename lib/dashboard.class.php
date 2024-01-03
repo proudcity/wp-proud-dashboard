@@ -15,7 +15,7 @@ class Dashboard extends ProudDashboard {
 
     public static $pages = [
         'dashboard' => ['title' => 'Dashboard', 'perm' => 'read'],
-        'analytics' => ['title' => 'Analytics', 'perm' => 'read', 'parent' => 'dashboard'],
+        //'analytics' => ['title' => 'Analytics', 'perm' => 'read', 'parent' => 'dashboard'],
         'marketplace'    => ['title' => 'Marketplace', 'perm' => 'read', 'parent' => 'dashboard'],
         'payments'     => ['title' => 'Payments', 'perm' => 'read', 'parent' => 'dashboard'],
         'users'     => ['title' => 'Users', 'perm' => 'create_users', 'parent' => 'dashboard'],
