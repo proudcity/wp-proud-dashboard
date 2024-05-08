@@ -65,6 +65,9 @@ class Proud_Dashboard{
 	 * @uses 	remove_meta_box() 						Removes the designated metabox
 	 */ 
 	public static function remove_dashboard_widgets(){
+
+		global $wp_meta_boxes;
+
 		remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );
 		remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );
 		remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );
@@ -82,6 +85,19 @@ class Proud_Dashboard{
 		remove_meta_box( 'auth0_dashboard_widget_signups', 'dashboard', 'normal' );
 		remove_meta_box( 'auth0_dashboard_widget_Location', 'dashboard', 'normal' );
 		remove_meta_box( 'auth0_dashboard_widget_idp', 'dashboard', 'normal' );
+		remove_meta_box( 'dashboard_rediscache', 'dashboard', 'normal' );
+		remove_meta_box( 'so-dashboard-news', 'dashboard', 'normal' );
+		remove_meta_box( 'wp_mail_smtp_reports_widget_lite', 'dashboard', 'normal' );
+		remove_meta_box( 'dashboard_site_health', 'dashboard', 'normal' );
+		remove_meta_box( 'em_booking_stats', 'dashboard', 'normal' );
+		remove_meta_box( 'blc_dashboard_widget', 'dashboard', 'normal' );
+		remove_meta_box( 'wpseo-wincher-dashboard-overview', 'dashboard', 'normal' );
+
+/*
+		echo '<pre>';
+		print_r( $wp_meta_boxes );
+		echo '</pre>';
+*/
 	}
 
 	/**
