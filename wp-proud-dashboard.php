@@ -46,6 +46,7 @@ class Proud_Dashboard{
 		$this->includes();
 
 		add_action( 'wp_dashboard_setup', array( $this, 'remove_dashboard_widgets' ) );
+		add_filter( 'wp_proud_phoenix_allowed_slugs', array( $this, 'allow_new_theme_styles' ), 1 );
 
 		// Register hooks that are fired when the plugin is activated, deactivated, and uninstalled, respectively.
 		register_activation_hook( __FILE__, array( $this, 'activate' ) );
@@ -72,6 +73,20 @@ class Proud_Dashboard{
 		remove_meta_box( 'auth0_dashboard_widget_signups', 'dashboard', 'normal' );
 		remove_meta_box( 'auth0_dashboard_widget_Location', 'dashboard', 'normal' );
 		remove_meta_box( 'auth0_dashboard_widget_idp', 'dashboard', 'normal' );
+	}
+
+	/**
+	 * Hooks in with the Pheonix theme found in the PC Analytics plugin so that we have
+	 * the styles from that theme available on this page as well
+	 *
+	 * @since 2024.05.08
+	 * @author Curtis
+	 * @access public
+	 *
+	 * @param 	array 		$page_slug 				required 				Array of page slugs in the WP admin that our styles should be shown on
+	 */
+	public static function allow_new_theme_styles( $page_slug ){
+		return $page_slug[] = 'dashboard';
 	}
 
 	/**
