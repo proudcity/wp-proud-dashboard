@@ -55,6 +55,15 @@ class Proud_Dashboard{
 
 	} // init
 
+	/**
+	 * Removes the metaboxes on the WP dashboard that we don't want
+	 *
+	 * @since 2024.05.088
+	 * @author Curtis
+	 * @access public
+	 *
+	 * @uses 	remove_meta_box() 						Removes the designated metabox
+	 */ 
 	public static function remove_dashboard_widgets(){
 		remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );
 		remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );
