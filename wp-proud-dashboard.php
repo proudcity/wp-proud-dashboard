@@ -133,7 +133,7 @@ class Proud_Dashboard{
 	 * @access public
 	 */
 	public function includes(){
-
+		require_once( PROUD_DASHBOARD_PLUGIN_DIR . '/widget/news-feed.php' );
 	}
 
 	/**
