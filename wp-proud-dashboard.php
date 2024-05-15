@@ -135,6 +135,12 @@ class Proud_Dashboard{
 	public function includes(){
 		require_once( PROUD_DASHBOARD_PLUGIN_DIR . '/widget/news-feed.php' );
 		require_once( PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-training.php' );
+		require_once( PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-plain-language.php' );
+		require_once( PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-clean-up.php' );
+		require_once( PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-review.php' );
+		require_once( PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-help-center.php' );
+		require_once( PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-support.php' );
+		require_once( PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-share.php' );
 	}
 
 	/**
