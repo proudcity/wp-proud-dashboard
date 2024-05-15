@@ -65,7 +65,7 @@ class Proud_News_Feed{
 
 		$html = '';
 
-		$html .= '<div id="proudcity-fyi" class="alert alert-soft-primary rounded-3" role="alert">';
+		$html .= '<div id="proudcity-fyi" class="alert alert-soft-primary rounded-3 proudcity-dashboard-widget" role="alert">';
 
 			if ( $limit = 0 ){
 				echo 'the feed is not available or empty';
