@@ -56,8 +56,7 @@ class Proud_News_Feed{
 	 * @uses 	get_items() 						gets the items in the feed
 	 */
 	public static function news_widget(){
-// https://proudcity.com/wp-json/wp/v2/posts?categories=235&per_page=1
-//
+
 		$feed = fetch_feed( 'http://proudcity.com/category/proudcity-news' );
 		$feed->set_cache_duration(43200); // cached for 12 hours
 		$limit = $feed->get_item_quantity(1); // the number of items in the feed
@@ -65,13 +64,16 @@ class Proud_News_Feed{
 
 		$html = '';
 
-		$html .= '<div id="proudcity-fyi" class="alert alert-soft-primary rounded-3 proudcity-dashboard-widget" role="alert">';
-
 			if ( $limit = 0 ){
-				echo 'the feed is not available or empty';
+				echo '<p>The feed is not available or empty.</p>';
 			} else {
 
 				foreach( $items as $item ){
+/*
+echo '<pre>';
+print_r( $item );
+echo '</pre>';
+*/
 					$html .= '<h3><a href="'. esc_url( $item->get_permalink() ). '" title="'. esc_html( $item->get_title() ) .'">';
 						$html .= esc_html( $item->get_title() );
 					$html .= '</a></h3>';
@@ -80,7 +82,6 @@ class Proud_News_Feed{
 
 			} // if limit
 
-		$html .= '</div><!-- /#proudcity-fyi -->';
 
 
 
