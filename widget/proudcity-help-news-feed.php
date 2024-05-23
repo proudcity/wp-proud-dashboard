@@ -81,9 +81,9 @@ class Proud_Help_News_Feed{
 		print_r( $item );
 		echo '</pre>';
 		*/
-							$html .= '<h3><a href="'. esc_url( $item->get_permalink() ). '" title="'. esc_html( $item->get_title() ) .'">';
+							$html .= '<h4><a href="'. esc_url( $item->get_permalink() ). '" title="'. esc_html( $item->get_title() ) .'">';
 								$html .= esc_html( $item->get_title() );
-							$html .= '</a></h3>';
+							$html .= '</a></h4>';
 							$html .= $item->get_description();
 						} // foreach
 
