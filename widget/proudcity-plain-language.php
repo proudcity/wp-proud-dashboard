@@ -36,7 +36,7 @@ class Proud_Plain_Language{
 	public static function add_widget(){
 		wp_add_dashboard_widget(
 			'proud_plain_language', 						// widget_slug
-			'Plain Language Training', 								// Title
+			'Plain language training', 								// Title
 			array( __CLASS__, 'create_widget' ),
 		);
 	}
@@ -50,7 +50,7 @@ class Proud_Plain_Language{
 		$html .= '<div id="proudcity-plain-language" class="rounded-3 proudcity-dashboard-widget row mb-3">';
 			$html .= '<div class="col-md-2 text-center"><i class="fa-solid fa-square-pen"></i></div>';
 			$html .= '<div class="col-md-10">';
-				$html .= '<p>Plain language training and support helps local governments advance their digital ervice and delivery skills.</p>';
+				$html .= '<p>Write bettergovernment website content.</p>';
 				$html .= '<a class="btn btn-sm btn-primary text-white" href="https://proudcity.com/plain-language">Plain language training</a>';
 			$html .= '</div>';
 		$html .= '</div><!-- /#proudcity-training -->';

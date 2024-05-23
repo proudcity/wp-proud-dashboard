@@ -36,7 +36,7 @@ class Proud_Help_Center{
 	public static function add_widget(){
 		wp_add_dashboard_widget(
 			'proud_help_center', 						// widget_slug
-			'Help Center', 								// Title
+			'Help center', 								// Title
 			array( __CLASS__, 'create_widget' ),
 		);
 	}
@@ -50,7 +50,7 @@ class Proud_Help_Center{
 		$html .= '<div id="proudcity-clean-up" class="rounded-3 proudcity-dashboard-widget row mb-3">';
 			$html .= '<div class="col-md-2 text-center"><i class="fa-solid fa-heart"></i></div>';
 			$html .= '<div class="col-md-10">';
-				$html .= '<p>Online documentation for (almost everything) ProudCity.</p>';
+				$html .= '<p>Docs for (almost) everything ProudCity.</p>';
 				$html .= '<a class="btn btn-sm btn-primary text-white" href="https://help.proudcity.com" target="_blank">Help center</a>';
 			$html .= '</div>';
 		$html .= '</div><!-- /#proudcity-training -->';

@@ -36,7 +36,7 @@ class Proud_Training{
 	public static function add_training_widget(){
 		wp_add_dashboard_widget(
 			'proud_training', 						// widget_slug
-			'ProudCity Training', 								// Title
+			'ProudCity training', 								// Title
 			array( __CLASS__, 'training_widget' ),
 		);
 	}
@@ -50,7 +50,7 @@ class Proud_Training{
 		$html .= '<div id="proudcity-training" class="rounded-3 proudcity-dashboard-widget row mb-3">';
 			$html .= '<div class="col-md-2 text-center"><i class="fa-solid fa-chalkboard"></i></div>';
 			$html .= '<div class="col-md-10">';
-				$html .= '<p>Orientation and Proudcity 101 training for new users and folks who need a refresher</p>';
+				$html .= '<p>New user and refresher classes</p>';
 				$html .= '<a class="btn btn-sm btn-primary text-white" href="https://proudcity.com/academy">ProudCity Training</a>';
 			$html .= '</div>';
 		$html .= '</div><!-- /#proudcity-training -->';

@@ -36,7 +36,7 @@ class Proud_Clean_Up{
 	public static function add_widget(){
 		wp_add_dashboard_widget(
 			'proud_clean_up', 						// widget_slug
-			'Site Clean Up', 								// Title
+			'Site clean-up', 								// Title
 			array( __CLASS__, 'create_widget' ),
 		);
 	}
@@ -50,7 +50,7 @@ class Proud_Clean_Up{
 		$html .= '<div id="proudcity-clean-up" class="rounded-3 proudcity-dashboard-widget row mb-3">';
 			$html .= '<div class="col-md-2 text-center"><i class="fa-solid fa-broom"></i></div>';
 			$html .= '<div class="col-md-10">';
-				$html .= '<p>Data optimization that keeps your website performante.</p>';
+				$html .= '<p>Data services to speed up your website.</p>';
 				$html .= '<a class="btn btn-sm btn-primary text-white" href="https://proudcity.com/cleanup" target="_blank">Clean-up</a>';
 			$html .= '</div>';
 		$html .= '</div><!-- /#proudcity-training -->';
