@@ -1,6 +1,6 @@
 <?php
 
-class Proud_News_Feed{
+class Proud_Help_News_Feed{
 
 	private static $instance;
 
@@ -15,7 +15,7 @@ class Proud_News_Feed{
 	public static function instance(){
 
 		if ( ! self::$instance ){
-			self::$instance = new Proud_News_Feed();
+			self::$instance = new Proud_Help_News_Feed();
 			self::$instance->init();
 		}
 
@@ -35,8 +35,8 @@ class Proud_News_Feed{
 
 	public static function add_news_widget(){
 		wp_add_dashboard_widget(
-			'proud_news_feed', 						// widget_slug
-			'News', 								// Title
+			'proud_help_news_feed', 						// widget_slug
+			'Support News', 								// Title
 			array( __CLASS__, 'news_widget' ),
 		);
 	}
@@ -58,15 +58,10 @@ class Proud_News_Feed{
 	public static function news_widget(){
 
 /**
- * - update widget order based on the current layout
- *
- * - Add 2nd widget for help.proudcity.com/category/dashboard-news
- * 		- but only once this one looks right
- *
  * - move the WP dashboard menu item to the top level of the menu
  */
 
-		$feed = fetch_feed( 'http://proudcity.com/category/dashboard-news' );
+		$feed = fetch_feed( 'http://help.proudcity.com/category/dashboard-news' );
 		$feed->set_cache_duration(43200); // cached for 12 hours in seconds
 		$limit = $feed->get_item_quantity(1); // the number of items in the feed
 		$items = $feed->get_items(0, $limit); // turn it into an array
@@ -104,4 +99,4 @@ class Proud_News_Feed{
 
 }
 
-Proud_News_Feed::instance();
+Proud_Help_News_Feed::instance();
