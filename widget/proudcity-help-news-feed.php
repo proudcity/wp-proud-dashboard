@@ -36,7 +36,7 @@ class Proud_Help_News_Feed{
 	public static function add_news_widget(){
 		wp_add_dashboard_widget(
 			'proud_help_news_feed', 						// widget_slug
-			'Support News', 								// Title
+			'Help news', 								// Title
 			array( __CLASS__, 'news_widget' ),
 		);
 	}
@@ -81,7 +81,7 @@ class Proud_Help_News_Feed{
 		print_r( $item );
 		echo '</pre>';
 		*/
-							$html .= '<h4><a href="'. esc_url( $item->get_permalink() ). '" title="'. esc_html( $item->get_title() ) .'">';
+							$html .= '<h4><a href="'. esc_url( $item->get_permalink() ). '" title="'. esc_html( $item->get_title() ) .'" target="_blank">';
 								$html .= esc_html( $item->get_title() );
 							$html .= '</a></h4>';
 							$html .= $item->get_description();
