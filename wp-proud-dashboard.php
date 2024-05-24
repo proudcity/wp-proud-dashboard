@@ -3,7 +3,7 @@
 Plugin Name:        Proud Dashboard
 Plugin URI:         https://github.com/proudcity/wp-proud-dashboard
 Description:        Multisite and other dashboard enhancements
-Version:            2024.05.24.1112
+Version:            2024.05.24.1509
 Author:             ProudCity
 Author URI:         http://proudcity.com
 License:            Affero GPL v3
@@ -94,6 +94,7 @@ class Proud_Dashboard{
 		remove_meta_box( 'em_booking_stats', 'dashboard', 'normal' );
 		remove_meta_box( 'blc_dashboard_widget', 'dashboard', 'normal' );
 		remove_meta_box( 'wpseo-wincher-dashboard-overview', 'dashboard', 'normal' );
+		remove_meta_box( 'google_dashboard_widget', 'dashboard', 'normal' );
 
 /*
 		echo '<pre>';
