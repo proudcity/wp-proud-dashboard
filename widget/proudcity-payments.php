@@ -48,9 +48,9 @@ class Proud_Widget_Payments{
 		$html = '';
 
 		$html .= '<div id="proudcity-payments" class="rounded-3 proudcity-dashboard-widget row mb-3">';
-			$html .= '<div class="col-md-2 text-center"><i class="fa-solid fa-money-bill"></i></div>';
+			$html .= '<div class="col-md-2 text-center"><i class="fa-solid fa-money-check-dollar"></i></div>';
 			$html .= '<div class="col-md-10">';
-				$html .= '<p>Access payments on your ProudCity Dashboard.</p>';
+				$html .= '<p>Manage settings, payments, payouts.</p>';
 				$html .= '<a class="btn btn-sm btn-primary text-white" href="https://my.proudcity.com" target="_blank">Payments</a>';
 			$html .= '</div>';
 		$html .= '</div><!-- /#proudcity-payments -->';

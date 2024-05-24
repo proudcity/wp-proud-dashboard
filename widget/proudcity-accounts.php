@@ -36,7 +36,7 @@ class Proud_Widget_Accounts{
 	public static function add_widget(){
 		wp_add_dashboard_widget(
 			'proud_accounts_widget', 						// widget_slug
-			'Accounts', 								// Title
+			'Users', 								// Title
 			array( __CLASS__, 'create_widget' ),
 		);
 	}
@@ -50,7 +50,7 @@ class Proud_Widget_Accounts{
 		$html .= '<div id="proudcity-accounts" class="rounded-3 proudcity-dashboard-widget row mb-3">';
 			$html .= '<div class="col-md-2 text-center"><i class="fa-solid fa-users"></i></div>';
 			$html .= '<div class="col-md-10">';
-				$html .= '<p>Access accounts on your ProudCity Dashboard.</p>';
+				$html .= '<p>Manage accounts and permissions</p>';
 				$html .= '<a class="btn btn-sm btn-primary text-white" href="https://my.proudcity.com" target="_blank">Accounts</a>';
 			$html .= '</div>';
 		$html .= '</div><!-- /#proudcity-accounts -->';
