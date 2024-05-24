@@ -3,7 +3,7 @@
 Plugin Name:        Proud Dashboard
 Plugin URI:         https://github.com/proudcity/wp-proud-dashboard
 Description:        Multisite and other dashboard enhancements
-Version:            2024.05.23.1617
+Version:            2024.05.24.0939
 Author:             ProudCity
 Author URI:         http://proudcity.com
 License:            Affero GPL v3
@@ -63,7 +63,7 @@ class Proud_Dashboard{
 	 * @access public
 	 *
 	 * @uses 	remove_meta_box() 						Removes the designated metabox
-	 */ 
+	 */
 	public static function remove_dashboard_widgets(){
 
 		global $wp_meta_boxes;
