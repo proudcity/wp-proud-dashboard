@@ -1,0 +1,7 @@
+body.js:not(.role-admin) .postbox h2.hndle{
+  cursor:default;
+}
+
+body.js:not(.role-admin) .postbox-header .handle-actions{
+  display:none;
+}

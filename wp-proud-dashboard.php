@@ -48,6 +48,7 @@ class Proud_Dashboard{
 		add_action( 'wp_dashboard_setup', array( $this, 'remove_dashboard_widgets' ) );
 		add_filter( 'wp_proud_phoenix_allowed_slugs', array( $this, 'allow_new_theme_styles' ), 1 );
 
+		add_action( 'admin_enqueue_scripts', array( $this, 'deregister_scripts' ) );
 
 
 		// Register hooks that are fired when the plugin is activated, deactivated, and uninstalled, respectively.
@@ -56,6 +57,22 @@ class Proud_Dashboard{
 		register_uninstall_hook( __FILE__, array( __CLASS__, 'uninstall' ) );
 
 	} // init
+
+	public static function deregister_scripts(){
+
+		// version plugin
+		$plugin_data = get_plugin_data( __FILE__ );
+		$screen = get_current_screen();
+
+		if ( $screen->id == 'dashboard' && current_user_can( 'activate_plugins' ) ){
+			// stops draggable options on the WP Dashboard
+			wp_deregister_script( 'postbox' );
+
+			// styles to hide all the draggable stuff from the UI in the dashbaord
+			wp_enqueue_style( 'wp_proud_dashboard_styles', plugins_url( '/wp-proud-dashboard/dashboard-styles.css' ), '', esc_attr( $plugin_data['Version'] ), 'all');
+		}
+
+	}
 
 	/**
 	 * Removes the metaboxes on the WP dashboard that we don't want
