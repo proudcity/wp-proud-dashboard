@@ -51,7 +51,7 @@ class Proud_Plain_Language{
 			$html .= '<div class="col-md-2 text-center"><i class="fa-solid fa-square-pen"></i></div>';
 			$html .= '<div class="col-md-10">';
 				$html .= '<p>Write bettergovernment website content.</p>';
-				$html .= '<a class="btn btn-sm btn-primary text-white" href="https://proudcity.com/plain-language">Plain language training</a>';
+				$html .= '<a class="btn btn-sm btn-primary text-white" href="https://proudcity.com/plain-language" target="_blank">Plain language training</a>';
 			$html .= '</div>';
 		$html .= '</div><!-- /#proudcity-training -->';
 
