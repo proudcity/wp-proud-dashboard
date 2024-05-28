@@ -3,7 +3,7 @@
 Plugin Name:        Proud Dashboard
 Plugin URI:         https://github.com/proudcity/wp-proud-dashboard
 Description:        Multisite and other dashboard enhancements
-Version:            2024.05.28.1105
+Version:            2024.05.28.1141
 Author:             ProudCity
 Author URI:         http://proudcity.com
 License:            Affero GPL v3
@@ -64,7 +64,7 @@ class Proud_Dashboard{
 		$plugin_data = get_plugin_data( __FILE__ );
 		$screen = get_current_screen();
 
-		if ( $screen->id == 'dashboard' && ! current_user_can( 'activate_plugins' ) ){
+		if ( $screen->id == 'dashboard' && ! current_user_can( 'delete_site' ) ){
 			// stops draggable options on the WP Dashboard
 			wp_deregister_script( 'postbox' );
 
