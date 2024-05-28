@@ -51,7 +51,7 @@ class Proud_Support{
 			$html .= '<div class="col-md-2 text-center"><i class="fa-solid fa-ticket"></i></div>';
 			$html .= '<div class="col-md-10">';
 				$html .= '<p>Can\'t find your answer in the help center?</p>';
-				$html .= '<a class="btn btn-sm btn-primary text-white" href="https://help.proudcity.com/support" target="_blank">Submit support ticket</a>';
+				$html .= '<a class="btn btn-sm btn-primary text-white" href="https://help.proudcity.com/support" target="_blank">Submit ticket</a>';
 			$html .= '</div>';
 		$html .= '</div><!-- /#proudcity-training -->';
 
