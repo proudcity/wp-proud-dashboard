@@ -56,9 +56,9 @@ class Proud_Widget_Payments{
 		}
 
 		if ( ! empty( getenv( 'PROUDCITY_PAYMENTS_SECRET' ) ) ){
-			$url = '/payments/overview/';
+			$url = '/payments/overview';
 		} else {
-			$url = '/payments/about/';
+			$url = '/payments/about';
 		}
 
 		$html = '';
