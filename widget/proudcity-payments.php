@@ -67,7 +67,7 @@ class Proud_Widget_Payments{
 			$html .= '<div class="col-md-2 text-center"><i class="fa-solid fa-money-check-dollar"></i></div>';
 			$html .= '<div class="col-md-10">';
 				$html .= '<p>Manage payments and reports.</p>';
-				$html .= '<a class="btn btn-sm btn-primary text-white" href="https://my.proudcity.com/sites/ '. esc_attr( $site ) . esc_attr( $url ) .'" target="_blank">Payments</a>';
+				$html .= '<a class="btn btn-sm btn-primary text-white" href="https://my.proudcity.com/sites/'. esc_attr( $site ) . esc_attr( $url ) .'" target="_blank">Payments</a>';
 			$html .= '</div>';
 		$html .= '</div><!-- /#proudcity-payments -->';
 
