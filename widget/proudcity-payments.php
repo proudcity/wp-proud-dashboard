@@ -45,13 +45,29 @@ class Proud_Widget_Payments{
 	 *
 	 */
 	public static function create_widget(){
+
+		/**
+		 * Sends the user to the proper account URL for their site or to a default if we're local
+		 */
+		if ( 'local' == wp_get_environment_type() ){
+			$site = 'wwwproudcity';
+		} else {
+			$site = getenv( 'WORDPRESS_DB_NAME' );
+		}
+
+		if ( ! empty( getenv( 'PROUDCITY_PAYMENTS_SECRET' ) ) ){
+			$url = '/payments/overview/';
+		} else {
+			$url = '/payments/about/';
+		}
+
 		$html = '';
 
 		$html .= '<div id="proudcity-payments" class="rounded-3 proudcity-dashboard-widget row mb-3">';
 			$html .= '<div class="col-md-2 text-center"><i class="fa-solid fa-money-check-dollar"></i></div>';
 			$html .= '<div class="col-md-10">';
 				$html .= '<p>Manage payments and reports.</p>';
-				$html .= '<a class="btn btn-sm btn-primary text-white" href="https://my.proudcity.com" target="_blank">Payments</a>';
+				$html .= '<a class="btn btn-sm btn-primary text-white" href="https://my.proudcity.com/sites/ '. esc_attr( $site ) . esc_attr( $url ) .'" target="_blank">Payments</a>';
 			$html .= '</div>';
 		$html .= '</div><!-- /#proudcity-payments -->';
 

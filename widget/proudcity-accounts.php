@@ -45,13 +45,23 @@ class Proud_Widget_Accounts{
 	 *
 	 */
 	public static function create_widget(){
+
+		/**
+		 * Sends the user to the proper account URL for their site or to a default if we're local
+		 */
+		if ( 'local' == wp_get_environment_type() ){
+			$site = 'wwwproudcity';
+		} else {
+			$site = getenv( 'WORDPRESS_DB_NAME' );
+		}
+
 		$html = '';
 
 		$html .= '<div id="proudcity-accounts" class="rounded-3 proudcity-dashboard-widget row mb-3">';
 			$html .= '<div class="col-md-2 text-center"><i class="fa-solid fa-users"></i></div>';
 			$html .= '<div class="col-md-10">';
 				$html .= '<p>Manage accounts and permissions</p>';
-				$html .= '<a class="btn btn-sm btn-primary text-white" href="https://my.proudcity.com" target="_blank">Accounts</a>';
+				$html .= '<a class="btn btn-sm btn-primary text-white" href="https://my.proudcity.com/sites/' . esc_attr( $site ) .'/users" target="_blank">Accounts</a>';
 			$html .= '</div>';
 		$html .= '</div><!-- /#proudcity-accounts -->';
 
