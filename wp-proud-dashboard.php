@@ -3,7 +3,7 @@
 Plugin Name:        Proud Dashboard
 Plugin URI:         https://github.com/proudcity/wp-proud-dashboard
 Description:        Multisite and other dashboard enhancements
-Version:            2024.06.07.1052
+Version:            2024.06.10.1102
 Author:             ProudCity
 Author URI:         http://proudcity.com
 License:            Affero GPL v3
@@ -131,8 +131,17 @@ class Proud_Dashboard{
 	 * @param 	array 		$page_slug 				required 				Array of page slugs in the WP admin that our styles should be shown on
 	 */
 	public static function allow_new_theme_styles( $page_slug ){
-		return $page_slug[] = 'dashboard';
-	}
+
+		array_push( $page_slug, 'dashboard' );
+
+		/*
+		echo '<pre>post - allowed';
+		print_r( $page_slug );
+		echo '</pre>';
+		*/
+
+		return (array) $page_slug;
+ 	}
 
 	/**
 	 * Gives us any constants we need in the plugin
