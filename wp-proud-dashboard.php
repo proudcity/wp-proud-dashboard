@@ -132,16 +132,15 @@ class Proud_Dashboard{
 	 */
 	public static function allow_new_theme_styles( $page_slug ){
 
-		array_push( $page_slug, 'dashboard' );
+		$page_slug[] = 'dashboard';
 
-		/*
-		echo '<pre>post - allowed';
-		print_r( $page_slug );
-		echo '</pre>';
-		*/
-
+/*
+	echo '<pre>page_slug';
+	print_r( $page_slug );
+	echo '</pre>';
+*/
 		return (array) $page_slug;
- 	}
+	}
 
 	/**
 	 * Gives us any constants we need in the plugin
