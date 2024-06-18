@@ -131,7 +131,15 @@ class Proud_Dashboard{
 	 * @param 	array 		$page_slug 				required 				Array of page slugs in the WP admin that our styles should be shown on
 	 */
 	public static function allow_new_theme_styles( $page_slug ){
-		return $page_slug[] = 'dashboard';
+
+		$page_slug[] = 'dashboard';
+
+/*
+	echo '<pre>page_slug';
+	print_r( $page_slug );
+	echo '</pre>';
+*/
+		return (array) $page_slug;
 	}
 
 	/**
