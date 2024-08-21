@@ -3,7 +3,7 @@
 Plugin Name:        Proud Dashboard
 Plugin URI:         https://github.com/proudcity/wp-proud-dashboard
 Description:        Multisite and other dashboard enhancements
-Version:            2024.08.21.0844
+Version:            2024.08.21.1352
 Author:             ProudCity
 Author URI:         http://proudcity.com
 License:            Affero GPL v3
@@ -69,7 +69,7 @@ class Proud_Dashboard
 
         if ($screen->id == 'dashboard' && ! current_user_can('delete_site')) {
             // stops draggable options on the WP Dashboard
-            wp_deregister_script('postbox');
+            //wp_deregister_script('postbox');
 
             // styles to hide all the draggable stuff from the UI in the dashbaord
             wp_enqueue_style('wp_proud_dashboard_styles', plugins_url('/wp-proud-dashboard/dashboard-styles.css'), '', esc_attr($plugin_data['Version']), 'all');
@@ -175,7 +175,8 @@ class Proud_Dashboard
         require_once(PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-clean-up.php');
         require_once(PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-review.php');
         require_once(PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-help-center.php');
-        //require_once(PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-concierge.php');
+        require_once(PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-concierge.php');
+        require_once(PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-gogov.php');
         require_once(PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-support.php');
         require_once(PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-payments.php');
         require_once(PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-accounts.php');
