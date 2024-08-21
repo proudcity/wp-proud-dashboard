@@ -3,7 +3,7 @@
 Plugin Name:        Proud Dashboard
 Plugin URI:         https://github.com/proudcity/wp-proud-dashboard
 Description:        Multisite and other dashboard enhancements
-Version:            2024.08.19.1250
+Version:            2024.08.21.0835
 Author:             ProudCity
 Author URI:         http://proudcity.com
 License:            Affero GPL v3
@@ -175,7 +175,7 @@ class Proud_Dashboard
         require_once(PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-clean-up.php');
         require_once(PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-review.php');
         require_once(PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-help-center.php');
-        require_once(PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-concierge.php');
+        //require_once(PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-concierge.php');
         require_once(PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-support.php');
         require_once(PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-payments.php');
         require_once(PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-accounts.php');
