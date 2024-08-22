@@ -54,7 +54,7 @@ class Proud_Concierge
         $html .= '<div id="proudcity-clean-up" class="rounded-3 proudcity-dashboard-widget row mb-3">';
         $html .= '<div class="col-md-2 text-center"><i class="fa-solid fa-bell-concierge"></i></div>';
         $html .= '<div class="col-md-10">';
-        $html .= '<p>Get on-demand, one-on-one time with ProudCity to help tackle a specific training need.</p>';
+        $html .= '<p>On-demand one-on-one time with ProudCity</p>';
         $html .= '<a class="btn btn-sm btn-primary text-white" href="https://proudcity.com/concierge" target="_blank">Order Concierge</a>';
         $html .= '</div>';
         $html .= '</div><!-- /#proudcity-training -->';

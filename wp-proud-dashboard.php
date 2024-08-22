@@ -3,7 +3,7 @@
 Plugin Name:        Proud Dashboard
 Plugin URI:         https://github.com/proudcity/wp-proud-dashboard
 Description:        Multisite and other dashboard enhancements
-Version:            2024.08.21.1352
+Version:            2024.08.22.1308
 Author:             ProudCity
 Author URI:         http://proudcity.com
 License:            Affero GPL v3
