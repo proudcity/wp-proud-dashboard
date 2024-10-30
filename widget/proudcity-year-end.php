@@ -49,7 +49,7 @@ class Proud_Widget_Year_End_Checklist{
 		$html = '';
 
 		$html .= '<div id="proudcity-ye-checklist" class="rounded-3 proudcity-dashboard-widget row mb-3">';
-			$html .= '<div class="col-md-2 text-center"><i class="fa-solid fa-spray-can-sparkles"></i></div>';
+			$html .= '<div class="col-md-2 text-center"><i class="fa-solid fa-calendar-check"></i></div>';
 			$html .= '<div class="col-md-10">';
 				$html .= '<p>Start cleaning, get housekeeping.</p>';
 				$html .= '<a class="btn btn-sm btn-primary text-white" href="https://help.proudcity.com/end-of-year-local-government-website-clean-up-checklist" target="_blank">Year-end checklist</a>';
