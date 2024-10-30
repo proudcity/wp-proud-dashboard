@@ -179,7 +179,8 @@ class Proud_Dashboard
         require_once(PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-gogov.php');
         require_once(PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-support.php');
         require_once(PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-payments.php');
-        require_once(PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-accounts.php');
+		require_once(PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-accounts.php');
+        require_once(PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-year-end.php');
         //require_once( PROUD_DASHBOARD_PLUGIN_DIR . '/widget/proudcity-share.php' );
     }
 
