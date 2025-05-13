@@ -45,6 +45,20 @@ class Proud_Help_News_Feed
         );
     }
 
+    public static function get_rss_error()
+    {
+        $html = '';
+
+        $html .= '<div id="prodcity-news" class="proudcity-dashboard-widget row mb-3">';
+        $html .= '<div class="col-md-2 text-center"><i class="fa-solid fa-newspaper"></i></div>';
+        $html .= '<div class="col-md-10">';
+        $html .= '<p>The feed is not available currently</p>';
+        $html .= '</div><!-- /.col-md-10 -->';
+        $html .= '</div><!-- /#proudcity-news -->';
+
+        return $html;
+    }
+
     /**
      * Gets our RSS feed and parses it into content for the widget
      *
@@ -67,7 +81,11 @@ class Proud_Help_News_Feed
          */
 
         $feed = fetch_feed(self::$url);
-        $feed->set_cache_duration(43200); // cached for 12 hours in seconds
+        if (is_wp_error($feed)) {
+            echo self::get_rss_error();
+            return;
+        }
+        $feed->set_cache_duration(43200); // cached for 12 hours in seconds is 43200
         $limit = $feed->get_item_quantity(1); // the number of items in the feed
         $items = $feed->get_items(0, $limit); // turn it into an array
 
@@ -80,10 +98,10 @@ class Proud_Help_News_Feed
             echo '<p>The feed is not available or empty.</p>';
         } else {
 
-            foreach($items as $item) {
+            foreach ($items as $item) {
                 /*
                 echo '<pre>';
-                print_r( $item );
+                print_r( $item->get_description() );
                 echo '</pre>';
                 */
                 $html .= '<h4><a href="'. esc_url($item->get_permalink()). '" title="'. esc_html($item->get_title()) .'" target="_blank">';
